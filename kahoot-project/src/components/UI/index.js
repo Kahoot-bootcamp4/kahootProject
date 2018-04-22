@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+//import React, {Component} from 'react';
 import styled from 'styled-components';
-import {excludeProp} from "../../utils";
-import {withRouter} from "react-router-dom";
+//import {excludeProp} from "../../utils";
+// import {withRouter} from "react-router-dom";
 
 
 export const Button = styled.button`
@@ -29,4 +29,11 @@ const Input = styled.input`
       color: #333;
       opacity: 0.7;
     }
+`;
+
+const Link = styled.link`
+    color: #ff0808;
+    font-size: 11px;
+    font-weight: bold;
+
 `;
