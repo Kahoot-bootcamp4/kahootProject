@@ -82,19 +82,19 @@ export default  class Timer extends Component {
             <div>
                 <div className="timerBox" style={{fontSize: "64px"}}>
 
-                        <p style={{fontSize: "16px"}}>Time left</p>
+                        {/*<p style={{fontSize: "20px", marginRight: "40px"}}>Time left</p>*/}
 
-                        <span className="minutes">{
-                            (seconds/60 < 10) ? "0" + Math.floor(seconds/60) : Math.floor(seconds/60)
-                        }</span>
-                        :
+                        {/*<span className="minutes">{*/}
+                            {/*(seconds/60 < 10) ? "0" + Math.floor(seconds/60) : Math.floor(seconds/60)*/}
+                        {/*}</span>*/}
+                        {/*:*/}
                         <span className="seconds">{
                             (seconds%60 < 10) ? "0" + (seconds%60) : (seconds%60)
                         }</span>
 
-                        <div onClick={this.setPoused} className="timerPause" />
+                        {/*<div onClick={this.setPoused} className="timerPause" />*/}
 
-                        <div onClick={this.setStop} className="timerStop" />
+                        {/*<div onClick={this.setStop} className="timerStop" />*/}
                 </div>
                 <LineBox width={ (this.state.seconds/this.initialTime)*100 } visible={this.state.reverse}/>
             </div>

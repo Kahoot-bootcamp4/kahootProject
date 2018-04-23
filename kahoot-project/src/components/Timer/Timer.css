@@ -21,6 +21,7 @@
 .timerBox{
 
     display: flex;
+    justify-content: center;
     /*display: block;*/
     /*width: 300px;*/
     background-color: #c4f1cd;
