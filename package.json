@@ -16,5 +16,15 @@
   "bugs": {
     "url": "https://github.com/spooon1993/kahootProject/issues"
   },
-  "homepage": "https://github.com/spooon1993/kahootProject#readme"
+  "homepage": "https://github.com/spooon1993/kahootProject#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.0.14",
+    "socket.io": "^2.1.0"
+  }
 }
