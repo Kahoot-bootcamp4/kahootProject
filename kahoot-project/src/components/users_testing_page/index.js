@@ -16,10 +16,10 @@ const TestingPage = (props) => {
             <Timer />
 
             <div className="TestBox">
-               <div className="BoxAnswer">Первый</div>
-               <div className="BoxAnswer">Второй</div>
-               <div className="BoxAnswer">Третий</div>
-               <div className="BoxAnswer">Четвертый</div>
+               <div id="a" className="BoxAnswer">Первый</div>
+               <div id="b" className="BoxAnswer">Второй</div>
+               <div id="c" className="BoxAnswer">Третий</div>
+               <div id="d" className="BoxAnswer">Четвертый</div>
 
             </div>
         </div>
