@@ -4,10 +4,11 @@ import styled from 'styled-components';
 // import {withRouter} from "react-router-dom";
 
 
-export const Button = styled.button`
-    background-image: ${props => props.theme === 'light'? '#fff' : '#000'};
-    height: ${props => props.size ? props.size : 50}px;
-    width: ${props => props.size ? props.size : 100}%;
+const Button = styled.button`
+    background-color: ${props => props.theme === 'light' ? '#fff' : '#000'};
+    color: ${props => props.color ? props.color : '#5ab962'};
+    height: ${props => props.height ? props.height : 50}px;
+    width: ${props => props.width ? props.width : 100}%;
     max-width: 480px;
     text-transform:uppercase;
     border: none;
@@ -18,9 +19,10 @@ export const Button = styled.button`
 `;
 
 const Input = styled.input`
+  background-color: #e7e7e7;
     letter-spacing: 0.04em;
     height: 100%;
-    width: 100%;
+    //width: 100%;
     border: none;
     &:focus{
       outline: none;
@@ -31,9 +33,11 @@ const Input = styled.input`
     }
 `;
 
-const Link = styled.link`
+const CustomLink = styled.a`
     color: #ff0808;
     font-size: 11px;
     font-weight: bold;
 
 `;
+
+export {Button, Input, CustomLink}
