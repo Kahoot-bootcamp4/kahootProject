@@ -34,6 +34,6 @@ app.use('/users/', usersRoute);
 
 app.use(express.static('./build'));
 // Must be a Server listen PORT
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is started on port №${PORT}`);
 });
