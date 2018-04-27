@@ -4,7 +4,6 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server, {
-    path: '/',
     origins: '*:*'
 });
 const bodyParser = require('body-parser');
@@ -12,6 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const usersRoute = require('./routes/users');
+const authRoute = require('./routes/auth');
 
 let online = 0;
 io.on('connection', (client) => {
@@ -24,7 +24,6 @@ io.on('connection', (client) => {
     });
 });
 
-
 app.use((request, response, next) => {
     console.log(`--->  ${request.method} -- ${request.url}`);
     next();
@@ -32,8 +31,17 @@ app.use((request, response, next) => {
 
 app.use('/users/', usersRoute);
 
+app.use('/auth/', authRoute);
+
 app.use(express.static('./build'));
-// Must be a Server listen PORT
+
+app.use((err, req, res, next) => {
+    res.json({
+        status: 400,
+        message: err.message
+    })
+});
+
 server.listen(PORT, () => {
     console.log(`Server is started on port №${PORT}`);
 });

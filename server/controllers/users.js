@@ -13,6 +13,10 @@ const controller = {
               req.data = user._doc;
               next();
           })
+          .catch((e) => {
+              let err = new Error(e.message);
+              next(err)
+          })
     },
     readAll(req, res, next){
         Users.find({}).exec()
@@ -20,12 +24,18 @@ const controller = {
                 req.data = users;
                 next()
             })
+            .catch((e) => {
+                next(e)
+            })
     },
     readOne(req, res,next){
         Users.findById(req.params.id)
             .then((user) => {
                 req.data = user;
                 next();
+            })
+            .catch((e) => {
+                next(e)
             })
     },
     update(req, res, next){
@@ -40,12 +50,18 @@ const controller = {
                 req.data = user;
                 next();
             })
+            .catch((e) => {
+                next(e)
+            })
     },
     delete(req, res, next){
         Users.findByIdAndRemove(req.params.id)
             .then((user) => {
                 req.data = user;
                 next();
+            })
+            .catch((e) => {
+                next(e)
             })
     }
 
