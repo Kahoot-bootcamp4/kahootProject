@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
-import AdminChoiseTest from "./components/adminChoiseTest/AdminChoiseTest";
 
+import AdminLogin from './components/admin_login/Login'
+
+import Test from './test.js';
+
+import AdminCreateGame from './components/admin_create_game';
+import UserTestingPage from './components/users_testing_page';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-<AdminChoiseTest/>
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <Switch>
 
-      </div>
-    );
-  }
+                        <Route path='/create' component={AdminCreateGame} />
+                        <Route path='/' component={UserTestingPage} />
+
+                        
+                        {/*<Test/>*/}
+
+                    </Switch>
+                </div>
+            </Router>
+        )
+    }
 }
 
 export default App;
