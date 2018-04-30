@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import './App.css';
+
 import Test from './test.js';
 
 import AdminCreateGame from './components/admin_create_game';
