@@ -186,10 +186,13 @@ class AdminCreateGame extends Component {
 
 
     render () {
+
         return (
             <Wrapper>
 
                 <p>СОЗДАНИЕ ИГРЫ</p>
+
+
                 <Button height="30" width="30" color="#2D3EFF" onClick={this.createBlock} >Создать</Button>
                 {
                     this.state.games.map((item, i)=>{
@@ -219,3 +222,12 @@ class AdminCreateGame extends Component {
 }
 
 export default AdminCreateGame;
+
+
+
+
+
+
+
+
+
