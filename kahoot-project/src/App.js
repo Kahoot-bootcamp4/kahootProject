@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch, NavLink, Redirect} from 'react-router-dom';
 import './App.css';
 
+import {Provider} from 'react-redux';
+import store from './components/store';
+
 import StartPage from './components/startPage';
 import AdminLogin from './components/admin_login/Login'
 import AdminCreateGame from './components/admin_create_game';
@@ -15,34 +18,36 @@ import AdminChoiseTest from './components/adminChoiseTest/AdminChoiseTest';
 class App extends Component {
     render() {
         return (
-            <Router>
-                <div className="App">
-                    <div className='links'>
-                        <NavLink to='/'>/==start==/</NavLink>
-                        <NavLink to='/test'>Test</NavLink>
-                        <NavLink to='/create'>create</NavLink>
-                        <NavLink to='/login'>Login</NavLink>
-                        <NavLink to='/start'>Start</NavLink>
-                        <NavLink to='/name'>Name</NavLink>
-                        <NavLink to='/result'>result</NavLink>
-                        <NavLink to='/pending'>pending</NavLink>
-                        <NavLink to='/choise'>choise</NavLink>
+            <Provider store={store}>
+                <Router>
+                    <div className="App">
+                        <div className='links'>
+                            <NavLink to='/'>/==start==/</NavLink>
+                            <NavLink to='/test'>Test</NavLink>
+                            <NavLink to='/create'>create</NavLink>
+                            <NavLink to='/login'>Login</NavLink>
+                            <NavLink to='/start'>Start</NavLink>
+                            <NavLink to='/name'>Name</NavLink>
+                            <NavLink to='/result'>result</NavLink>
+                            <NavLink to='/pending'>pending</NavLink>
+                            <NavLink to='/choise'>choise</NavLink>
+                        </div>
+
+                        <Switch>
+                            <Route path='/login' component={AdminLogin} />
+                            <Route path='/start' component={UserStartPage} />
+                            <Route path='/name' component={UserName} />
+                            <Route path='/create' component={AdminCreateGame} />
+                            <Route path='/test' component={UserTestingPage} />
+                            <Route path='/result' component={ResultPage} />
+                            <Route path='/pending' component={PendingRoom} />
+                            <Route path='/choise' component={AdminChoiseTest} />
+                            <Route path='/' component={StartPage} />
+
+                        </Switch>
                     </div>
-
-                    <Switch>
-                        <Route path='/login' component={AdminLogin} />
-                        <Route path='/start' component={UserStartPage} />
-                        <Route path='/name' component={UserName} />
-                        <Route path='/create' component={AdminCreateGame} />
-                        <Route path='/test' component={UserTestingPage} />
-                        <Route path='/result' component={ResultPage} />
-                        <Route path='/pending' component={PendingRoom} />
-                        <Route path='/choise' component={AdminChoiseTest} />
-                        <Route path='/' component={StartPage} />
-
-                    </Switch>
-                </div>
-            </Router>
+                </Router>
+            </Provider>
         )
     }
 }
