@@ -9,10 +9,17 @@ display:block;
 `;
 
 class AdminChoiseTest extends Component{
+    state =[{test: 'тема для регуляркам'},{
+         test: 'тема переменной'
+    },{
+        test: 'тема для инкапсуляция'
+    }];
     render(){
         return(
             <Wraper>
-                test
+                {this.state.map((key,index)=>{
+                    return <p> test = {this.state[index].test}  </p>
+                })}
             </Wraper>
         )
     }
