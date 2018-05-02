@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 import styled from 'styled-components';
+import {Button, Input} from '../UI/index';
 
 
 const test = styled.div
-    `background-color: red`
+    `background-color: red`;
 
 
 
@@ -27,14 +28,14 @@ export default class UserStartPage extends Component {
 
         return (
             <div class="root">
-                <input type="text"
+                <Input type="text"
                        className="login__name"
                        placeholder="Login"
                        value={login}
                        onChange={this.changeInput.bind(this, 'login')}
                 />
                <br/>
-                <button onClick={this.login}>Enter</button>
+                <Button width={10} height={30} onClick={this.login}>Enter</Button>
             </div>
         )
     }
