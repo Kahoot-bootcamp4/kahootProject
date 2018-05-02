@@ -7,13 +7,15 @@ display:block;
     height: 100vh;
     background-color: #2dbcc34d;
 `;
-
 class AdminChoiseTest extends Component{
     state =[{test: 'тема для регуляркам'},{
          test: 'тема переменной'
     },{
         test: 'тема для инкапсуляция'
     }];
+
+
+
     render(){
         return(
             <Wraper>
