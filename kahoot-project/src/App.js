@@ -8,6 +8,7 @@ import Test from './test.js';
 
 import AdminCreateGame from './components/admin_create_game';
 import UserTestingPage from './components/users_testing_page';
+import AdminChoiseTest from "./components/adminChoiseTest/AdminChoiseTest";
 
 class App extends Component {
     render() {
@@ -17,7 +18,7 @@ class App extends Component {
                     <Switch>
 
                         <Route path='/create' component={AdminCreateGame} />
-                        <Route path='/' component={UserTestingPage} />
+                        <Route path='/' component={AdminChoiseTest} />
 
                         
                         {/*<Test/>*/}
