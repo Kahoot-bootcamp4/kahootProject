@@ -6,7 +6,6 @@ import {Button, Input} from '../UI/index';
 
 
 const Box = styled.div`
-  
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,11 +18,14 @@ const Box = styled.div`
 `;
 
 const sexses = `Вы зарегились`;
+const notsexses = `Ошибка регистрации`;
+
 
 class AdminLogin extends Component {
     state ={
         login: '',
         password: '',
+        email: '',
         renderIf: false
     };
 
@@ -63,20 +65,24 @@ class AdminLogin extends Component {
             .then((res) => res.json())
             .then((token) => {
 
-
                 localStorage.setItem("token", token.token);
 
                 this.setState({
                     renderIf : token.status
                 });
-
+                if(token.status !== 200) {
+                    this.setState({
+                        err: token.message
+                })
+                }
             })
             .catch((e) => {
                 console.log(e);
             })
     };
     ifRender = () => {
-        return this.state.renderIf ? sexses : ""
+        if (this.state.renderIf === 200) {return sexses}
+        else {return this.state.renderIf === 400 ? this.state.err : ''}
     };
 
 
@@ -91,9 +97,24 @@ class AdminLogin extends Component {
             <div>{this.ifRender()}</div>
             <Button onClick={this.loginReg}>Reg</Button>
 
-            <Input height={10} type='text' value={this.state.login} onChange={this.onChange.bind(this, 'login')} /><br/>
+            <Input height={10}
+                   placeholder="Email"
+                   type='text'
+                   value={this.state.email}
+                   onChange={this.onChange.bind(this, 'email')} /><br/>
 
-            <Input height={10} type='password' value={this.state.password} onChange={this.onChange.bind(this, 'password')} /><br/>
+            <Input height={10}
+                   placeholder="Login"
+                   type='text'
+                   value={this.state.login}
+                   onChange={this.onChange.bind(this, 'login')} /><br/>
+
+            <Input height={10}
+                   placeholder="Password"
+                   type='password'
+                   value={this.state.password}
+                   onChange={this.onChange.bind(this, 'password')} /><br/>
+
             <Button onClick={this.loginFunc}>Login</Button>
 
             </Box>
