@@ -29,6 +29,7 @@ const PrivateRoute = (props) => {
     }
 }
 
+
 class App extends Component {
     render() {
         return (
