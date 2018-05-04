@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const usersRoute = require('./routes/users');
 const authRoute = require('./routes/auth');
+const gameRoute = require('./routes/games');
 
 let online = 0;
 io.on('connection', (client) => {
@@ -32,6 +33,8 @@ app.use((request, response, next) => {
 app.use('/users/', usersRoute);
 
 app.use('/auth/', authRoute);
+
+app.use('/games/', gameRoute);
 
 app.use(express.static('./build'));
 

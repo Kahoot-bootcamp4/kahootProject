@@ -1,5 +1,5 @@
 const prepareBody = require('../controllers/prepareBody');
-const controller = require('../controllers/users');
+const controller = require('../controllers/games');
 const route = require('express').Router();
 
 

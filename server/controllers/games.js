@@ -5,10 +5,21 @@ const controller = {
         Games.create({
             id: req.body.id,
             description: req.body.description,
-            questions: req.body.questions[{
-                question_id: req.body.question_id,
-                question: req.body.question,
-                time: req.body.time }]
+            questions: req.body.games.map((questionObj, index) => {
+                return {
+                    questionText: questionObj.question,
+                    answers: questionObj.answers.map((answerObj, index) => {
+                        return {
+                            answer: answerObj.var,
+                            correct: answerObj.correct
+                        }
+                    })
+                }
+            })
+            // questions: req.body.questions[{
+            //     question_id: req.body.question_id,
+            //     question: req.body.question,
+            //     time: req.body.time }]
         })
             .then((games) => {
             req.data = games._doc;
