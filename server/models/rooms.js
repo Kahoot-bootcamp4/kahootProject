@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const roomsSchema = mongoose.Schema({
+    roomID: String,
     gameID: String,
     players: [{
         name: String,
