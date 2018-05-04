@@ -111,22 +111,9 @@ class AdminCreateGame extends Component {
     constructor(props){
         super(props);
         this.state = {
+            description: 'ИМЯ ИГРЫ',
             games: [
                 { question:"Вопрос 1",
-                    answers:[
-                        {var1:"v1",correct: true},
-                        {var2:"v2",correct: false},
-                        {var3:"v3",correct: false} ,
-                        {var4:"v4",correct: false}]
-                },
-                { question:"Вопрос 2",
-                    answers:[
-                        {var1:"v1",correct: true},
-                        {var2:"v2",correct: false},
-                        {var3:"v3",correct: false} ,
-                        {var4:"v4",correct: false}]
-                },
-                { question:"Вопрос 3",
                     answers:[
                         {var1:"v1",correct: true},
                         {var2:"v2",correct: false},
@@ -135,6 +122,15 @@ class AdminCreateGame extends Component {
                 }
             ]
         };
+    };
+
+    sendGame = () => {
+        let newGame = this.state;
+        console.log(newGame);
+    };
+    namedGame = () => {
+        let name = prompt();
+        this.setState({description : name})
     };
 
     deletBlock =(i) => {
@@ -185,15 +181,18 @@ class AdminCreateGame extends Component {
 
 
 
+
     render () {
 
         return (
             <Wrapper>
 
-                <p>СОЗДАНИЕ ИГРЫ</p>
+                <Button height="30" width="30" color="#E321E7" onClick={this.namedGame} >Введите имя игры</Button> <br/>
+                <p>{this.state.description}</p>
 
 
-                <Button height="30" width="30" color="#2D3EFF" onClick={this.createBlock} >Создать</Button>
+
+                <Button height="30" width="30" color="#2D3EFF" onClick={this.createBlock} >Создать вопрос</Button>
                 {
                     this.state.games.map((item, i)=>{
                         return(
@@ -216,6 +215,8 @@ class AdminCreateGame extends Component {
                         )
                     })
                 }
+                <br/><Button height="30" width="30" color="#E321E7" onClick={this.sendGame} >ОТПРАВКА ИГРЫ</Button>
+
             </Wrapper>
         )
     }
