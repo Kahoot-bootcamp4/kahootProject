@@ -7,19 +7,26 @@ const gamesSchema = mongoose.Schema({
     description: {
         type: String
     },
-    questions: [{
-        question_id: {
-            type: String
-        },
-        question: [{
-            type: String
-        }],
-        time: Number,
-        answers: [{
-            answer: String,
-            correct: Boolean
-        }]
-    }]
+
+    questions: []
+    // questions: [{
+    //     questionText: {},
+    //     answers: [{type: Object}]
+    // }]
+
+    // questions: [{
+    //     question_id: {
+    //         type: String
+    //     },
+    //     question: [{
+    //         type: String
+    //     }],
+    //     time: Number,
+    //     answers: [{
+    //         answer: String,
+    //         correct: Boolean
+    //     }]
+    // }]
 });
 
 module.exports = mongoose.model('Games', gamesSchema);
