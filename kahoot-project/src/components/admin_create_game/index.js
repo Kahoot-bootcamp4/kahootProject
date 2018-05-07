@@ -37,41 +37,46 @@ class Create extends Component {
         super(props);
         this.state = {
             edit: false,
+            id: null
         };
     }
-    edit = () => {
-        this.setState ({edit: true});
+    edit = (event) => {
+        let curentNumber = event.target.id;
+        this.setState ({
+            edit: true,
+            id : curentNumber
+        });
     };
 
     createBlock = () => {
-
         this.props.createBlock()
     };
 
     remove = () => {
-
         this.props.deletBlock(this.props.index)
     };
     save = () => {
-        this.props.updateQuestion (this.refs.newTxt0.value, this.props.index);
-        this.props.updateAnswers1 (this.refs.newTxt1.value, this.props.index);
-        this.props.updateAnswers2 (this.refs.newTxt2.value, this.props.index);
-        this.props.updateAnswers3 (this.refs.newTxt3.value, this.props.index);
-        this.props.updateAnswers4 (this.refs.newTxt4.value, this.props.index);
+        this.props.updateQuestion (this.refs.newTxt0.value, this.state.id);
+        {this.props.questionInfo[this.state.id].answers.map((v,j)=>{
+            this.props.updateAnswers1(this.refs[`Txt${j}`].value, this.state.id, j);
+        })}
         this.setState ({edit: false})
-
     };
 
     rendNorm = () => {
         return (
-            <div>
-                <div className="text">{this.props.children[0]}</div>
-                <div className="text">{this.props.children[1]}</div>
-                <div className="text">{this.props.children[2]}</div>
-                <div className="text">{this.props.children[3]}</div>
-                <div className="text">{this.props.children[4]}</div>
-                <Button height="30" width="70" onClick={this.edit} >Редактировать</Button>
-                <Button height="30" width="70" color="#ff0808" onClick={this.remove} >Удалить</Button>
+            <div>{this.props.questionInfo.map((element, i)=> {
+                    return <div>
+                        <div className="text">{element.question}</div>
+
+                        {element.answers.map((answ, j)=> <div className="text" key={j}>{answ.var}</div>)}
+
+                        <Button height="30" width="70" onClick={this.edit} id={i}>Редактировать</Button>
+                        <Button height="30" width="70" color="#ff0808" onClick={this.remove} >Удалить</Button>
+                    </div>
+                }
+            )}
+
             </div>
 
 
@@ -79,19 +84,15 @@ class Create extends Component {
     };
 
 
+
     rendEdit = () => {
         return (
             <div>
-                <textarea ref="newTxt0" defaultValue={this.props.children[0]}></textarea><br/>
+                <textarea ref="newTxt0" defaultValue={`${this.props.questionInfo[this.state.id].question}`}></textarea><br/>
 
-                <textarea ref="newTxt1" defaultValue={this.props.children[1]}></textarea><br/>
-
-                <textarea ref="newTxt2" defaultValue={this.props.children[2]}></textarea><br/>
-
-                <textarea ref="newTxt3" defaultValue={this.props.children[3]}></textarea><br/>
-
-                <textarea ref="newTxt4" defaultValue={this.props.children[4]}></textarea><br/>
-
+                {this.props.questionInfo[this.state.id].answers.map((answ, j)=>{
+                    return <div><textarea ref={`Txt${j}`} defaultValue={answ.var}></textarea><br/></div>
+                })}
                 <Button height="30" width="70" color="#5ab962" onClick={this.save} >Сохранить</Button>
             </div>
         );
@@ -115,10 +116,10 @@ class AdminCreateGame extends Component {
             games: [
                 { question:"Вопрос 1",
                     answers:[
-                        {var1:"v1",correct: true},
-                        {var2:"v2",correct: false},
-                        {var3:"v3",correct: false} ,
-                        {var4:"v4",correct: false}]
+                        {var:"v1",correct: true},
+                        {var:"v2",correct: false},
+                        {var:"v3",correct: false} ,
+                        {var:"v4",correct: false}]
                 }
             ]
         };
@@ -144,10 +145,10 @@ class AdminCreateGame extends Component {
         questionArr.push(
             { question:"Вопрос",
                 answers:[
-                    {var1:"ячейка для правильного ответа",correct: true},
-                    {var2:"v",correct: false},
-                    {var3:"v",correct: false} ,
-                    {var4:"v",correct: false}]
+                    {var:"ячейка для правильного ответа",correct: true},
+                    {var:"v",correct: false},
+                    {var:"v",correct: false} ,
+                    {var:"v",correct: false}]
             }
         );
         this.setState({games:questionArr})
@@ -158,62 +159,28 @@ class AdminCreateGame extends Component {
         questionArr[i].question = text;
         this.setState({games:questionArr})
     };
-    updateAnswers1 = (text, i)=>{
-        let questionArr = this.state.games;
-        questionArr[i].answers[0].var1 = text;
-        this.setState({games:questionArr})
-    };
-    updateAnswers2 = (text, i)=>{
-        let questionArr = this.state.games;
-        questionArr[i].answers[1].var2 = text;
-        this.setState({games:questionArr})
-    };
-    updateAnswers3 = (text, i)=>{
-        let questionArr = this.state.games;
-        questionArr[i].answers[2].var3 = text;
-        this.setState({games:questionArr})
-    };
-    updateAnswers4 = (text, i)=>{
-        let questionArr = this.state.games;
-        questionArr[i].answers[3].var4 = text;
-        this.setState({games:questionArr})
-    };
 
-
+    updateAnswers1 = (text, i, j)=>{
+        let questionArr = this.state.games;
+        questionArr[i].answers[j].var = text;
+        this.setState({games:questionArr})
+    };
 
 
     render () {
-
         return (
             <Wrapper>
-
                 <Button height="30" width="30" color="#E321E7" onClick={this.namedGame} >Введите имя игры</Button> <br/>
                 <p>{this.state.description}</p>
-
-
-
                 <Button height="30" width="30" color="#2D3EFF" onClick={this.createBlock} >Создать вопрос</Button>
                 {
-                    this.state.games.map((item, i)=>{
-                        return(
-                            <Create key={i} index={i}
-                                    updateQuestion={this.updateQuestion}
-                                    updateAnswers1={this.updateAnswers1}
-                                    updateAnswers2={this.updateAnswers2}
-                                    updateAnswers3={this.updateAnswers3}
-                                    updateAnswers4={this.updateAnswers4}
-                                    deletBlock={this.deletBlock}
-                                    createBlock={this.createBlock}
-
-                            >
-                                {item.question}
-                                {item.answers[0].var1}
-                                {item.answers[1].var2}
-                                {item.answers[2].var3}
-                                {item.answers[3].var4}
-                            </Create>
-                        )
-                    })
+                    <Create questionInfo={this.state.games}
+                            updateQuestion={this.updateQuestion}
+                            updateAnswers1={this.updateAnswers1}
+                            deletBlock={this.deletBlock}
+                            createBlock={this.createBlock}
+                    >
+                    </Create>
                 }
                 <br/><Button height="30" width="30" color="#E321E7" onClick={this.sendGame} >ОТПРАВКА ИГРЫ</Button>
 
@@ -223,12 +190,3 @@ class AdminCreateGame extends Component {
 }
 
 export default AdminCreateGame;
-
-
-
-
-
-
-
-
-
