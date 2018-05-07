@@ -47,11 +47,9 @@ class Create extends Component {
             id : curentNumber
         });
     };
-
     createBlock = () => {
         this.props.createBlock()
     };
-
     remove = () => {
         this.props.deletBlock(this.props.index)
     };
@@ -62,7 +60,6 @@ class Create extends Component {
         })}
         this.setState ({edit: false})
     };
-
     rendNorm = () => {
         return (
             <div>{this.props.questionInfo.map((element, i)=> {
@@ -82,8 +79,6 @@ class Create extends Component {
 
         );
     };
-
-
 
     rendEdit = () => {
         return (
@@ -128,18 +123,33 @@ class AdminCreateGame extends Component {
     sendGame = () => {
         let newGame = this.state;
         console.log(newGame);
+        fetch('https://kahoot-bootcamp4.herokuapp.com/games/', {
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if(data.data.status === 200) {
+                    this.props.history.push('/choise')
+                } else {
+                    alert("ОШИБКА В СОЗДАНИИ ТЕСТА")
+                }
+            });
     };
     namedGame = () => {
         let name = prompt();
         this.setState({description : name})
     };
-
     deletBlock =(i) => {
         let questionArr = this.state.games;
         questionArr.splice(i, 1);
         this.setState({games:questionArr})
     };
-
     createBlock =() => {
         let questionArr = this.state.games;
         questionArr.push(
@@ -153,19 +163,16 @@ class AdminCreateGame extends Component {
         );
         this.setState({games:questionArr})
     };
-
     updateQuestion = (text, i)=>{
         let questionArr = this.state.games;
         questionArr[i].question = text;
         this.setState({games:questionArr})
     };
-
     updateAnswers1 = (text, i, j)=>{
         let questionArr = this.state.games;
         questionArr[i].answers[j].var = text;
         this.setState({games:questionArr})
     };
-
 
     render () {
         return (
