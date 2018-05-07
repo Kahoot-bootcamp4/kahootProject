@@ -45,34 +45,22 @@ class Create extends Component {
         this.setState ({
             edit: true,
             id : curentNumber
-
         });
     };
 
     createBlock = () => {
-
         this.props.createBlock()
     };
 
     remove = () => {
-
         this.props.deletBlock(this.props.index)
     };
     save = () => {
-        let j;
-        console.log(this.refs.Txt0.value);
-        // this.props.updateQuestion (this.refs.newTxt0.value, this.state.id);
-        // // {this.props.questionInfo[this.state.id].answers.map((v,j)=>{
-        // // })}
-        // this.props.updateAnswer(this.refs.Txt0.value, this.state.id, 0);
-
-
-        // this.props.updateAnswers1 (this.refs.newTxt1.value, this.props.index);
-        // this.props.updateAnswers2 (this.refs.newTxt2.value, this.props.index);
-        // this.props.updateAnswers3 (this.refs.newTxt3.value, this.props.index);
-        // this.props.updateAnswers4 (this.refs.newTxt4.value, this.props.index);
+        this.props.updateQuestion (this.refs.newTxt0.value, this.state.id);
+        {this.props.questionInfo[this.state.id].answers.map((v,j)=>{
+            this.props.updateAnswers1(this.refs[`Txt${j}`].value, this.state.id, j);
+        })}
         this.setState ({edit: false})
-
     };
 
     rendNorm = () => {
@@ -101,8 +89,9 @@ class Create extends Component {
         return (
             <div>
                 <textarea ref="newTxt0" defaultValue={`${this.props.questionInfo[this.state.id].question}`}></textarea><br/>
+
                 {this.props.questionInfo[this.state.id].answers.map((answ, j)=>{
-                    return <textarea ref={`Txt${j}`} defaultValue={answ.var}></textarea>
+                    return <div><textarea ref={`Txt${j}`} defaultValue={answ.var}></textarea><br/></div>
                 })}
                 <Button height="30" width="70" color="#5ab962" onClick={this.save} >Сохранить</Button>
             </div>
@@ -131,14 +120,7 @@ class AdminCreateGame extends Component {
                         {var:"v2",correct: false},
                         {var:"v3",correct: false} ,
                         {var:"v4",correct: false}]
-                },
-                // { question:"Вопрос2",
-                //     answers:[
-                //         {var:"ячейка для правильного ответа",correct: true},
-                //         {var:"v",correct: false},
-                //         {var:"v",correct: false} ,
-                //         {var:"v",correct: false}]
-                // }
+                }
             ]
         };
     };
@@ -178,63 +160,27 @@ class AdminCreateGame extends Component {
         this.setState({games:questionArr})
     };
 
-    updateAnswer = (text, i, j)=>{
+    updateAnswers1 = (text, i, j)=>{
         let questionArr = this.state.games;
         questionArr[i].answers[j].var = text;
         this.setState({games:questionArr})
     };
 
-    // updateAnswers2 = (text, i)=>{
-    //     let questionArr = this.state.games;
-    //     questionArr[i].answers[1].var2 = text;
-    //     this.setState({games:questionArr})
-    // };
-
-    // updateAnswers3 = (text, i)=>{
-    //     let questionArr = this.state.games;
-    //     questionArr[i].answers[2].var3 = text;
-    //     this.setState({games:questionArr})
-    // };
-
-    // updateAnswers4 = (text, i)=>{
-    //     let questionArr = this.state.games;
-    //     questionArr[i].answers[3].var4 = text;
-    //     this.setState({games:questionArr})
-    // };
-
-
-
 
     render () {
-
         return (
             <Wrapper>
-
                 <Button height="30" width="30" color="#E321E7" onClick={this.namedGame} >Введите имя игры</Button> <br/>
                 <p>{this.state.description}</p>
-
-
-
                 <Button height="30" width="30" color="#2D3EFF" onClick={this.createBlock} >Создать вопрос</Button>
                 {
                     <Create questionInfo={this.state.games}
                             updateQuestion={this.updateQuestion}
                             updateAnswers1={this.updateAnswers1}
-                            updateAnswers2={this.updateAnswers2}
-                            updateAnswers3={this.updateAnswers3}
-                            updateAnswers4={this.updateAnswers4}
                             deletBlock={this.deletBlock}
                             createBlock={this.createBlock}
-
                     >
-                        {/*{item.question}*/}
-                        {/*{item.answers[0].var}*/}
-                        {/*{item.answers[1].var}*/}
-                        {/*{item.answers[2].var}*/}
-                        {/*{item.answers[3].var}*/}
-                        {/*{this.state.games[i].answers.map((answ, j)=> answ.var)}*/}
                     </Create>
-
                 }
                 <br/><Button height="30" width="30" color="#E321E7" onClick={this.sendGame} >ОТПРАВКА ИГРЫ</Button>
 
