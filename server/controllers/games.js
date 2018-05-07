@@ -22,7 +22,8 @@ const controller = {
             //     time: req.body.time }]
         })
             .then((games) => {
-            req.data = games._doc;
+                games._doc.status = 200;
+                req.data = games._doc;
         next();
     })
     .catch((e) => {
