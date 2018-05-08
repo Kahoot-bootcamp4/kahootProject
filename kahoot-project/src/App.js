@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch, NavLink, Redirect} from 'react-router-dom';
 import './App.css';
-import {getLogged} from "./utils";
+import {excludeProp, getLogged} from "./utils";
 import {Provider} from 'react-redux';
 import store from './components/store';
 
@@ -9,6 +9,7 @@ import StartPage from './components/startPage';
 import AdminLogin from './components/admin_login/Login'
 import AdminCreateGame from './components/admin_create_game';
 import TestingPage from './components/users_testing_page/index';
+import AdminEditGame from './components/edit/';
 import UserStartPage from './components/User_Start_Page/UserStartPage';
 import UserName from './components/User_Name/UserName';
 import ResultPage from './components/resultPage';
@@ -21,7 +22,8 @@ const PrivateRoute = (props) => {
     if (getLogged()){
 
         // Перенаправляем на закрытый роутинг
-        return <Route component={props.component} />
+
+        return <Route {...excludeProp(props, 'component')} component={props.component} />
     } else {
 
         // Перенаправляем на страницу логина
@@ -40,6 +42,7 @@ class App extends Component {
                             <NavLink to='/'>/==start==/</NavLink>
                             <NavLink to='/test'>Test</NavLink>
                             <NavLink to='/create'>create</NavLink>
+                            <NavLink to='/edit'>edit</NavLink>
                             <NavLink to='/login'>Login</NavLink>
                             <NavLink to='/start'>Start</NavLink>
                             <NavLink to='/name'>Name</NavLink>
@@ -53,6 +56,7 @@ class App extends Component {
                             <Route path='/start' component={UserStartPage} />
                             <Route path='/name' component={UserName} />
                             <PrivateRoute path='/create' component={AdminCreateGame} />
+                            <PrivateRoute path='/edit/:id' component={AdminEditGame} />
                             <Route path='/test' component={TestingPage} />
                             <Route path='/result' component={ResultPage} />
                             <Route path='/pending' component={PendingRoom} />
