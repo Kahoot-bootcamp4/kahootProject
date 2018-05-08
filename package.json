@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node ./server/app.js",
     "dev": "nodemon --inspect ./server/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "react": "react-scripts start"
   },
   "repository": {
     "type": "git",
