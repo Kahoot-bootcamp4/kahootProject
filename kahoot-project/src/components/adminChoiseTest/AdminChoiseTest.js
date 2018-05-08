@@ -131,7 +131,7 @@ class AdminChoiseTest extends Component{
                 <Link to='/create'><Button >Create Test</Button></Link>
                 <Ul>
                     {this.state.tests.map((key,i)=>{
-                        return (<Li>
+                        return (<Li id={key._id}>
                             <P>{this.state.tests[i].description}</P>
                             <Button width={30}>Редактировать</Button>
                             <Button width={20}>Start</Button>
