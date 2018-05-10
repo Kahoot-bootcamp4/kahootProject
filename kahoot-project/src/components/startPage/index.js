@@ -11,7 +11,7 @@ const Div = styled.div`
     height: 100vh;
     background-color: #808080;
         flex-direction: row;
-        padding-top: 30%;
+        align-items: center;
         justify-content: space-around;
 
 `;

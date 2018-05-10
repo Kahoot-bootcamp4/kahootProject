@@ -3,19 +3,21 @@ import styled from 'styled-components';
 
 import {Button, Input} from '../UI/index';
 
+const Div = styled.div`
+background-color: #e7e8ea;
+  height: 100vh;
+  display: flex;
+`
+
+
+
 
 
 const Box = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-   //align-items: center;
-   //align-self:center;
     margin: auto;
-    width: 200px;
-    height: 200px;
-    background-color: #e7e7e7;
+    width: 250px;
 `;
+
 
 const sexses = `Вы зарегились`;
 const notsexses = `Ошибка регистрации`;
@@ -91,7 +93,7 @@ class AdminLogin extends Component {
     render () {
 
         return (
-        <div>
+<Div>
             <Box>
 
             <div>{this.ifRender()}</div>
@@ -118,7 +120,7 @@ class AdminLogin extends Component {
             <Button onClick={this.loginFunc}>Login</Button>
 
             </Box>
-        </div>
+</Div>
         )
 
     }

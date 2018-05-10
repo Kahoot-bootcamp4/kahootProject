@@ -2,7 +2,15 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import {Button, Input} from '../UI/index';
 
-
+const DivName = styled.div`
+background-color: #e7e8ea;
+  height: 100vh;
+  display: flex;
+`
+const Name = styled.div`
+    margin: auto;
+   
+`;
 
 export default class UserName extends Component {
     state = {
@@ -18,16 +26,18 @@ export default class UserName extends Component {
     render() {
         const {login, password} = this.state;
         return (
-            <div class="root">
-                <Input type="password"
+            <DivName>
+            <Name>
+                <Input type="text"
                        className="login__name"
-                       placeholder="Password"
+                       placeholder="Name"
                        value={password}
                        onChange={this.changeInput.bind(this, 'password')}
                 />
                 <br/>
-                <Button height={30} width={11} onClick={this.login}>Enter</Button>
-            </div>
+                <Button height={30} width={40} onClick={this.login}>Enter</Button>
+            </Name>
+            </DivName>
         )
     }
 }

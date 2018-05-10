@@ -8,7 +8,7 @@ const Wraper = styled.div`
     display:block;
     width: 100%;
     //height: 100vh;
-    background-color: #2dbcc34d;
+    background-color: #e7e8ea;
 `;
 
 const Li = styled.li`

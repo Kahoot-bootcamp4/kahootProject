@@ -3,9 +3,15 @@ import PropTypes from "prop-types";
 import styled from 'styled-components';
 import {Button, Input} from '../UI/index';
 
-
-const test = styled.div
-    `background-color: red`;
+const DivPin = styled.div`
+background-color: #e7e8ea;
+  height: 100vh;
+  display: flex;
+`
+const Pin = styled.div`
+    margin: auto;
+   
+`;
 
 
 
@@ -27,16 +33,18 @@ export default class UserStartPage extends Component {
         const {login, password} = this.state;
 
         return (
-            <div class="root">
+            <DivPin>
+            <Pin >
                 <Input type="text"
                        className="login__name"
-                       placeholder="Login"
+                       placeholder="Pin"
                        value={login}
                        onChange={this.changeInput.bind(this, 'login')}
                 />
                <br/>
-                <Button width={10} height={30} onClick={this.login}>Enter</Button>
-            </div>
+                <Button width={40} height={30} onClick={this.login}>Enter</Button>
+            </Pin>
+            </DivPin>
         )
     }
 }

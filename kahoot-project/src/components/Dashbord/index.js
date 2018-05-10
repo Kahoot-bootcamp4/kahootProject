@@ -4,6 +4,7 @@ import  React, {Component} from "react";
 import styled from 'styled-components';
 import {Button} from "../UI";
 
+
 const Container = styled.div`
     font-style: italic;
     font-size: 26px;
@@ -18,6 +19,7 @@ const Ul = styled.div`
 
 const Div = styled.div`
 background-color: #e7e8ea;
+height: 100vh;
 `
 
 const Li = styled.div`
