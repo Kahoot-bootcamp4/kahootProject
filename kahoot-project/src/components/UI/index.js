@@ -9,19 +9,29 @@ const Button = styled.button`
     color: ${props => props.color ? props.color : '#5ab962'};
     height: ${props => props.height ? props.height : 50}px;
     width: ${props => props.width ? props.width : 100}%;
-    max-width: 480px;
-    text-transform:uppercase;
-    border: none;
+    max-width: 250px;
+    text-transform: uppercase;
     font-family: inherit;
-    font-size: 11px;
     font-weight: bold;
     letter-spacing: 0.14em;
+    
+    font-size: 1.14em;
+     -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    
+    background-color: #fff;
+    -moz-box-shadow: 0 2px 2px rgba(0,0,0,.05), inset 0 -2px 0 rgba(0,0,0,.08);
+    -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.05), inset 0 -2px 0 rgba(0,0,0,.08);
+    box-shadow: 0 2px 2px rgba(0,0,0,.05), inset 0 -2px 0 rgba(0,0,0,.08);
+    border: 1px solid #c4c4c4;
+    color: #777;
 `;
 
 const Input = styled.input`
-  background-color: #e7e7e7;
+    background-color: rgba(248,255,249,0.74);
     letter-spacing: 0.04em;
-    height: 100%;
+    height: ${props => props.height ? props.height : 100}%;
     //width: 100%;
     border: none;
     &:focus{

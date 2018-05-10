@@ -5,12 +5,12 @@ const controller = {
         Games.create({
             id: req.body.id,
             description: req.body.description,
-            questions: req.body.games.map((questionObj, index) => {
+            games: req.body.games.map((questionObj, index) => {
                 return {
                     questionText: questionObj.question,
                     answers: questionObj.answers.map((answerObj, index) => {
                         return {
-                            answer: answerObj.var,
+                            var: answerObj.var,
                             correct: answerObj.correct
                         }
                     })
@@ -22,7 +22,8 @@ const controller = {
             //     time: req.body.time }]
         })
             .then((games) => {
-            req.data = games._doc;
+                games._doc.status = 200;
+                req.data = games._doc;
         next();
     })
     .catch((e) => {

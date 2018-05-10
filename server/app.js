@@ -6,6 +6,8 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server, {
     origins: '*:*'
 });
+const cors = require('cors');
+app.use(cors());
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

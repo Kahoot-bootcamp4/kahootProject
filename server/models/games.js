@@ -8,7 +8,7 @@ const gamesSchema = mongoose.Schema({
         type: String
     },
 
-    questions: []
+    games: []
     // questions: [{
     //     questionText: {},
     //     answers: [{type: Object}]

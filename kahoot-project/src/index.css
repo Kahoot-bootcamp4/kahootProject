@@ -3,3 +3,19 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.pending-room {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.pending-room__waiting {
+  background-image: url("");
+}
+
+.pending-room__user-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
