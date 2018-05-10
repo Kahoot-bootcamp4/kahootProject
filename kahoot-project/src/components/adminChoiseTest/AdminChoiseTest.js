@@ -12,7 +12,6 @@ const Wraper = styled.div`
 `;
 
 const Li = styled.li`
-    border: 1px solid #000;
     margin-bottom: 20px;
         display: flex;
     justify-content: space-around;

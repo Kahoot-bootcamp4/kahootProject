@@ -35,7 +35,7 @@ export default class UserName extends Component {
                        onChange={this.changeInput.bind(this, 'password')}
                 />
                 <br/>
-                <Button height={30} width={40} onClick={this.login}>Enter</Button>
+                <Button height={30}  onClick={this.login}>Enter</Button>
             </Name>
             </DivName>
         )

@@ -189,7 +189,7 @@ class AdminCreateGame extends Component {
                     >
                     </Create>
                 }
-                <br/><Button height="30" width="30" color="#E321E7" onClick={this.sendGame} >ОТПРАВКА ИГРЫ</Button>
+                <br/><Button height="30"  color="#E321E7" onClick={this.sendGame} >ОТПРАВКА ИГРЫ</Button>
 
             </Wrapper>
         )
