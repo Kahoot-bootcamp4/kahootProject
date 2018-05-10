@@ -1,5 +1,25 @@
 .App {
   text-align: center;
+
+}
+.links{
+  display: flex;
+  justify-content: space-around;
+
+  font-size: 20px;
+  color: #ffd129;
+  background-color: #c2ecff;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.link:hover{
+  padding: 0 5px 0 5px;
+  transition: transform .2s;
+  transform: scale(1.1);
+  background: #761d78;
+  color: #ffe;
+
 }
 
 .App-logo {
@@ -26,3 +46,4 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+

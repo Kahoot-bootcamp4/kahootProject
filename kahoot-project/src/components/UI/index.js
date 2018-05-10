@@ -29,9 +29,9 @@ const Button = styled.button`
 `;
 
 const Input = styled.input`
-  background-color: #e7e7e7;
+    background-color: rgba(248,255,249,0.74);
     letter-spacing: 0.04em;
-    height: 100%;
+    height: ${props => props.height ? props.height : 100}%;
     //width: 100%;
     border: none;
     &:focus{
