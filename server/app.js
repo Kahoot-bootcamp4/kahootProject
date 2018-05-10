@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const usersRoute = require('./routes/users');
 const authRoute = require('./routes/auth');
 const gameRoute = require('./routes/games');
+const gameRoom = require('./routes/rooms');
 
 let online = 0;
 io.on('connection', (client) => {
@@ -38,11 +39,13 @@ app.use('/auth/', authRoute);
 
 app.use('/games/', gameRoute);
 
-app.use(express.static('./kahoot-project/build'));
+app.use('/rooms/', gameRoom);
+
+app.use(express.static('./build'));
 
 app.use((err, req, res, next) => {
     res.json({
-        status: 400,
+        status: err.status || 400,
         message: err.message
     })
 });
