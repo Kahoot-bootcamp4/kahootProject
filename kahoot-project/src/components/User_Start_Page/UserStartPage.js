@@ -5,6 +5,15 @@ import {Button, Input} from '../UI/index';
 import {connect} from 'react-redux';
 import store from "../store/DisabledStore";
 
+const DivPin = styled.div`
+background-color: #e7e8ea;
+  height: 100vh;
+  display: flex;
+`
+const Pin = styled.div`
+    margin: auto;
+   
+`;
 
 
 
@@ -53,17 +62,18 @@ import store from "../store/DisabledStore";
 
     render() {
         return (
-            <div className="root">
-                <div>{this.state.rendError ? "ОШИБКА" : ""}</div>
+            <DivPin>
+            <Pin >
                 <Input type="text"
                        className="login__name"
-                       placeholder="ENTER_PINCODE"
-                       value={this.state.pinCode}
-                       onChange={this.changeInput.bind(this, 'pinCode')}
+                       placeholder="Pin"
+                       value={login}
+                       onChange={this.changeInput.bind(this, 'login')}
                 />
-                <br/>
-                <Button width={10} height={30} onClick={this.addPin}>Enter</Button>
-            </div>
+               <br/>
+                <Button width={40} height={30} onClick={this.login}>Enter</Button>
+            </Pin>
+            </DivPin>
         )
     }
 }

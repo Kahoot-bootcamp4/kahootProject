@@ -3,7 +3,15 @@ import styled from 'styled-components';
 import {Button, Input} from '../UI/index';
 import {connect} from 'react-redux';
 
-
+const DivName = styled.div`
+background-color: #e7e8ea;
+  height: 100vh;
+  display: flex;
+`
+const Name = styled.div`
+    margin: auto;
+   
+`;
 
 
 
@@ -26,16 +34,18 @@ import {connect} from 'react-redux';
         const {nickName} = this.state;
         console.log(nickName);
         return (
-            <div className="root">
+            <DivName>
+            <Name>
                 <Input type="text"
                        className="login__name"
-                       placeholder="NICK_NAME"
-                       value={nickName}
-                       onChange={this.changeInput.bind(this, 'nickName')}
+                       placeholder="Name"
+                       value={password}
+                       onChange={this.changeInput.bind(this, 'password')}
                 />
                 <br/>
-                <Button height={30} width={11} onClick={this.addNickName}>Enter</Button>
-            </div>
+                <Button height={30} width={40} onClick={this.login}>Enter</Button>
+            </Name>
+            </DivName>
         )
     }
 }

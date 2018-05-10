@@ -1,4 +1,13 @@
 import  React, {Component} from "react";
+import styled from 'styled-components';
+
+
+const Div = styled.div`
+background-color: #e7e8ea;
+height: 100vh;
+`
+
+
 
 class PedingRoom extends Component{
     state = {
@@ -8,8 +17,8 @@ class PedingRoom extends Component{
 
     render(){
         return(
-            <div className='pending-room'>
-                <div className='pending-room__waiting'></div>
+            <Div>
+
                 <h2>{this.state.currentUser}</h2>
                 <p>Waiting for other students</p>
                 <ul className='pending-room__user-list'>
@@ -17,7 +26,7 @@ class PedingRoom extends Component{
                         return <li>{this.state.userList[index]}</li>
                     })}
                 </ul>
-            </div>
+            </Div>
         )
     }
 }

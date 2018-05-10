@@ -29,11 +29,14 @@ const Button = styled.button`
 `;
 
 const Input = styled.input`
-    background-color: rgba(248,255,249,0.74);
+    background-color: rgba(255,255,255,0.74);
     letter-spacing: 0.04em;
     height: ${props => props.height ? props.height : 100}%;
     //width: 100%;
-    border: none;
+  width: 225px;
+  
+    margin: 20px 0;
+    padding: 10px;
     &:focus{
       outline: none;
     }

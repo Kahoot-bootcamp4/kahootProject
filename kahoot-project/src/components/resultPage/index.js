@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const Wraper = styled.div`
-
-    background-color: #61dede9e;
-        flex-direction: column;
+background-color: #e7e8ea;
+ flex-direction: column;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -16,14 +15,12 @@ const Ul = styled.ul`
     flex-direction: column;
 `;
 const Li = styled.li`
-border: 1px solid #000;
+
 display: flex;
-    flex-direction: roll;
+  
 
 `;
-const P = styled.p`
-border: 1px solid #000;
-`;
+
 
 
 class ResultPage extends Component {
@@ -65,7 +62,7 @@ class ResultPage extends Component {
             }).map((item,e)=>{
                 let a = e;
                 a++;
-                return  <Li><P>№{a}</P>  <P>name ={this.state[e].name}</P><P>score = {this.state[e].score}</P> </Li>})}
+                return  <Li><p>№{a}</p>  <p>name ={this.state[e].name}</p><p>score = {this.state[e].score}</p> </Li>})}
 
             </Ul>
         </Wraper>

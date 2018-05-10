@@ -14,6 +14,7 @@ import UserStartPage from './components/User_Start_Page/UserStartPage';
 import UserName from './components/User_Name/UserName';
 import ResultPage from './components/resultPage';
 import PendingRoom from './components/PendingRoom';
+import Dashbord from './components/Dashbord/index';
 import AdminChoiseTest from './components/adminChoiseTest/AdminChoiseTest';
 
 const PrivateRoute = (props) => {
@@ -49,6 +50,7 @@ class App extends Component {
                             <NavLink to='/result'>result</NavLink>
                             <NavLink to='/pending'>pending</NavLink>
                             <NavLink to='/choise'>choise</NavLink>
+                            <NavLink to='/dashbord'>dashbord</NavLink>
                         </div>
 
                         <Switch>
@@ -61,7 +63,9 @@ class App extends Component {
                             <Route path='/result' component={ResultPage} />
                             <Route path='/pending' component={PendingRoom} />
                             <Route path='/choise' component={AdminChoiseTest} />
+                            <Route path='/dashbord' component={Dashbord} />
                             <Route path='/' component={StartPage} />
+
 
                         </Switch>
                     </div>
