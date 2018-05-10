@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Switch, NavLink, Redirect} from 'react-r
 import './App.css';
 import {getLogged} from "./utils";
 import {Provider} from 'react-redux';
-import store from './components/store';
+import store from './components/store/index';
 
 import StartPage from './components/startPage';
 import AdminLogin from './components/admin_login/Login'
