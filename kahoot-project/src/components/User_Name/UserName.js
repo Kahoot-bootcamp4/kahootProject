@@ -50,6 +50,7 @@ const Name = styled.div`
     }
 }
 
+
 const mapStateToProps = (state) => {
     return {
         nickName: state.currentUser.nickName
