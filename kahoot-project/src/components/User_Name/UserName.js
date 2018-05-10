@@ -40,6 +40,7 @@ import {connect} from 'react-redux';
     }
 }
 
+
 const mapStateToProps = (state) => {
     return {
         nickName: state.currentUser.nickName
