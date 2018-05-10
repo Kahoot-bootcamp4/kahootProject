@@ -1,7 +1,7 @@
 const prepareBody = require('../controllers/prepareBody');
-const controller = require('../controllers/games');
+const controller = require('../controllers/rooms');
 const route = require('express').Router();
-
+const createToken = require('../controllers/createToken');
 
 
 route.get('/', controller.readAll, prepareBody, (req, res) => {
@@ -13,6 +13,10 @@ route.get('/:id/', controller.readOne, prepareBody, (req, res) => {
 });
 
 route.post('/', controller.create, prepareBody, (req, res) => {
+    res.json(req.responseData);
+});
+
+route.post('/check/', controller.check, createToken, prepareBody, (req, res) => {
     res.json(req.responseData);
 });
 

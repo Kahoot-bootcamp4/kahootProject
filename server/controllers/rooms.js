@@ -1,25 +1,16 @@
 const Rooms = require('../models/rooms');
+const createToken = require('./createToken');
 
 const controller = {
     create(req, res, next){
         Rooms.create({
-            id: req.body.id,
             gameID: req.body.gameID,
             players: req.body.players.map((playersObj, index) => {
                 return {
                     name: playersObj.name,
-                    points: playersObj.points.map((playersObj, index) => {
-                        return {
-                            answer: playersObj.var,
-                            correct: playersObj.correct
-                        }
-                    })
-    }
-    })
-        // questions: req.body.questions[{
-        //     question_id: req.body.question_id,
-        //     question: req.body.question,
-        //     time: req.body.time }]
+                    points: playersObj.points
+                }
+            })
     })
     .then((rooms) => {
             req.data = rooms._doc;
@@ -57,14 +48,9 @@ const controller = {
             players: req.body.players.map((playersObj, index) => {
                 return {
                     name: playersObj.name,
-                    points: playersObj.points.map((playersObj, index) => {
-                        return {
-                            answer: playersObj.var,
-                            correct: playersObj.correct
-                        }
-                    }
+                    points: playersObj.points
                 }
-        })
+        })})
             .then((games) => {
             req.data = games;
         next();
@@ -82,6 +68,33 @@ const controller = {
     .catch((e) => {
             next(e)
         })
+    },
+
+    check(req, res, next){
+        Rooms.find({}).exec()
+            .then((rooms) => {
+                if ( rooms.map((room) => {
+                    return room.gameID
+                }).includes(req.body.pinCode) ){
+                    next()
+                } else {
+                    const err = new Error('not found')
+                    err.status = 404;
+                    next(err)
+                }
+
+                // rooms.forEach((room) => {
+                //     if(req.body.pinCode === room.gameID){
+                //         next()
+                //     } else {
+                //         debugger
+                //     }
+                // })
+
+            })
+            .catch((e) => {
+                next(e)
+            })
     }
 
 };

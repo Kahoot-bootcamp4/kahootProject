@@ -43,7 +43,7 @@ app.use(express.static('./build'));
 
 app.use((err, req, res, next) => {
     res.json({
-        status: 400,
+        status: err.status || 400,
         message: err.message
     })
 });
