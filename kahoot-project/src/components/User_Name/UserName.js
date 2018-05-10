@@ -38,12 +38,12 @@ class UserName extends Component {
                 <Name>
                     <Input type="text"
                            className="login__name"
-                           placeholder="Name"
-                           value={nickName}
-                           onChange={this.changeInput.bind(this, 'password')}
+                           placeholder="nickName"
+                           value={this.state.nickName}
+                           onChange={this.changeInput.bind(this, 'nickName')}
                     />
                     <br/>
-                    <Button height={30}  onClick={this.login}>Enter</Button>
+                    <Button height={30}  onClick={this.addNickName}>Enter</Button>
                 </Name>
             </DivName>
         )
@@ -60,7 +60,7 @@ const dispatchToProps = (dispatch) => {
     return {
         addNickName: ({nickName}) => {
             dispatch({
-                type: "USER_CHANGE_NAME",
+                type: "ADD_NEW_NICK_NAME",
                 nickName
             });
         },

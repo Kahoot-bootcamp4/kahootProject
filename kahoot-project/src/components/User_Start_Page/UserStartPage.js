@@ -31,8 +31,8 @@ class UserStartPage extends Component {
         })
             .then((res)=>res.json())
             .then((data)=>{
-                debugger;
-                console.log(data);
+
+                // console.log(data);
                 if(data.data.status === 200) {
                     console.log("OK");
                 }
