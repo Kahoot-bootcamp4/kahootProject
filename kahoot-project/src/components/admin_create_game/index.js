@@ -177,9 +177,9 @@ class AdminCreateGame extends Component {
     render () {
         return (
             <Wrapper>
-                <Button height="30" width="30" color="#E321E7" onClick={this.namedGame} >Введите имя игры</Button> <br/>
+                <Button height="30" color="#E321E7" onClick={this.namedGame} >Введите имя игры</Button> <br/>
                 <p>{this.state.description}</p>
-                <Button height="30" width="30" color="#2D3EFF" onClick={this.createBlock} >Создать вопрос</Button>
+                <Button height="30"  color="#2D3EFF" onClick={this.createBlock} >Создать вопрос</Button>
                 {
                     <Create questionInfo={this.state.games}
                             updateQuestion={this.updateQuestion}
@@ -189,7 +189,7 @@ class AdminCreateGame extends Component {
                     >
                     </Create>
                 }
-                <br/><Button height="30" width="30" color="#E321E7" onClick={this.sendGame} >ОТПРАВКА ИГРЫ</Button>
+                <br/><Button height="30"  color="#E321E7" onClick={this.sendGame} >ОТПРАВКА ИГРЫ</Button>
 
             </Wrapper>
         )

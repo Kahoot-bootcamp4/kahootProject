@@ -71,7 +71,7 @@ const Pin = styled.div`
                        onChange={this.changeInput.bind(this, 'login')}
                 />
                <br/>
-                <Button width={40} height={30} onClick={this.login}>Enter</Button>
+                <Button  height={30} onClick={this.login}>Enter</Button>
             </Pin>
             </DivPin>
         )

@@ -12,7 +12,6 @@ const Wraper = styled.div`
 `;
 
 const Li = styled.li`
-    border: 1px solid #000;
     margin-bottom: 20px;
         display: flex;
     justify-content: space-around;
@@ -133,8 +132,8 @@ class AdminChoiseTest extends Component{
                     {this.state.tests.map((key,i)=>{
                         return (<Li id={key._id}>
                             <P>{this.state.tests[i].description}</P>
-                            <Button width={30}>Редактировать</Button>
-                            <Button width={20}>Start</Button>
+                            <Button >Редактировать</Button>
+                            <Button >Start</Button>
                             </Li>)
                     })}
 
