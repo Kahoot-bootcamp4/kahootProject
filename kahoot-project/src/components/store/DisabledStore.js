@@ -4,9 +4,10 @@ const initialState = {};
 
 const ACTIONS = {
     'ADD_NEW_USER': 'ADD_NEW_USER',
+    'ADD_NEW_PINCODE': 'ADD_NEW_PINCODE',
     'UPDATE_USERS': 'UPDATE_USERS',
     'DELETE_USER': 'DELETE_USER'
-}
+};
 
 const store = createStore( (state = initialState, action) => {
     switch (action.type) {
@@ -17,6 +18,11 @@ const store = createStore( (state = initialState, action) => {
                     password: action.password,
                     email: action.email
                 }]
+            }
+        }
+        case ACTIONS.ADD_NEW_PINCODE: {
+            return {
+                pinCode: action.pinCode
             }
         }
 
