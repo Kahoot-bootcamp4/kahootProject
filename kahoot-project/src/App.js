@@ -66,8 +66,9 @@ class App extends Component {
                             <Route path='/pending' component={PendingRoom} />
                             <Route path='/choise' component={AdminChoiseTest} />
                             <Route path='/dashbord' component={Dashbord} />
-                            <Route path='/' component={StartPage} />
                             <Route path='/common' component={Common} />
+                            <Route path='/' component={StartPage} />
+
 
 
                         </Switch>

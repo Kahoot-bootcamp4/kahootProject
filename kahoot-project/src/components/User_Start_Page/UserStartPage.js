@@ -5,19 +5,10 @@ import {Button, Input} from '../UI/index';
 import {connect} from 'react-redux';
 import store from "../store/DisabledStore";
 
-const DivPin = styled.div`
-background-color: #e7e8ea;
-  height: 100vh;
-  display: flex;
-`
-const Pin = styled.div`
-    margin: auto;
-   
-`;
 
 
 
- class UserStartPage extends Component {
+class UserStartPage extends Component {
     state = {
         rendError: false,
         pinCode: ''
@@ -31,13 +22,13 @@ const Pin = styled.div`
 
     addPin = () => {
         fetch('/games/check/', {
-                method: 'POST',
-                body: JSON.stringify(this.state.pinCode),
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                }
-            })
+            method: 'POST',
+            body: JSON.stringify(this.state.pinCode),
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        })
             .then((res)=>res.json())
             .then((data)=>{
                 debugger;
@@ -57,45 +48,42 @@ const Pin = styled.div`
         // this.props.addPin({
         //     pinCode: this.state.pinCode
         // })
-        
+
     };
 
     render() {
         return (
-            <DivPin>
-            <Pin >
+            <div className="root">
+                <div>{this.state.rendError ? "ОШИБКА" : ""}</div>
                 <Input type="text"
                        className="login__name"
-                       placeholder="Pin"
-                       value={login}
-                       onChange={this.changeInput.bind(this, 'login')}
+                       placeholder="ENTER_PINCODE"
+                       value={this.state.pinCode}
+                       onChange={this.changeInput.bind(this, 'pinCode')}
                 />
-               <br/>
-                <Button width={40} height={30} onClick={this.login}>Enter</Button>
-            </Pin>
-            </DivPin>
+                <br/>
+                <Button width={10} height={30} onClick={this.addPin}>Enter</Button>
+            </div>
         )
     }
 }
 
-    const mapStateToProps = (state) => {
-        return {
-            pinCode: state.users.pinCode
-        }
-    };
-    const dispatchToProps = (dispatch) => {
-        return {
-            addPin: ({pinCode}) => {
-                dispatch({
-                    type: "ADD_NEW_PINCODE",
-                    pinCode
-                });
-            },
-        }
+const mapStateToProps = (state) => {
+    return {
+        pinCode: state.users.pinCode
+    }
+};
+const dispatchToProps = (dispatch) => {
+    return {
+        addPin: ({pinCode}) => {
+            dispatch({
+                type: "ADD_NEW_PINCODE",
+                pinCode
+            });
+        },
+    }
 
-    };
-
-
-    export default connect(mapStateToProps, dispatchToProps)(UserStartPage);
+};
 
 
+export default connect(mapStateToProps, dispatchToProps)(UserStartPage);

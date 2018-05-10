@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 
-import {connect} from 'react-redux';
-import ResultPage from '/resultPage';
+import ResultPage from '../resultPage';
+import TestingPage from '../users_testing_page';
+import PedingRoom from '../PendingRoom';
+
+
 
 
 class Common extends Component {
@@ -11,16 +14,19 @@ class Common extends Component {
 
     render(){
         return(
-            <div>
-
-               <ResultPage/>
+            <div>{
+                this.state.compVisible==="w1"? <PedingRoom/> : ""
+                }
+                {
+                    this.state.compVisible==="w1"? <TestingPage/> : ""
+                }
+                {
+                    this.state.compVisible==="w"? <ResultPage/> : ""
+                }
 
             </div>
         )
     }
-
-
-
 
 }
 export default Common;
