@@ -1,6 +1,7 @@
 import  React, {Component} from "react";
 import styled from 'styled-components';
 
+
 //
                 // <ul>
                 //     {this.state.userList.map((userList, index) => {
@@ -20,11 +21,13 @@ const Ul = styled.div`
   flex-wrap: wrap;
   padding: 50px 0;
 `
+import {connect} from 'react-redux';
+
 
 const Div = styled.div`
 background-color: #e7e8ea;
 height: 100vh;
-`
+`;
 
 const Li = styled.div`
   flex-basis: 30%;
@@ -57,85 +60,27 @@ opacity: .7;
 
 class PedingRoom extends Component{
     state = {
-        currentUser: 'RUSLAN',
-        users: [
-            {id:0,
-                name: 'user 1',
-                points: 0},
+        currentUser: this.props.nickName,
+        userList: ['Jim', 'Bim', 'Sim', 'Kim', 'Vim', 'Lim', 'Fim', 'Rim', 'Pim', 'Him']
 
-            {id:1,
-                name: 'user 2',
-                points: 0},
-
-            {id:2,
-                name: 'user 3',
-                points: 0},
-
-            {id:3,
-                name: 'user 4',
-                points: 0},
-
-            {id:4,
-                name: 'user 5',
-                points: 0},
-
-            {id:5,
-                name: 'user 6',
-                points: 0},
-
-            {id:6,
-                name: 'user 7',
-                points: 0},
-
-            {id:7,
-                name: 'user 8',
-                points: 0},
-
-            {id:8,
-                name: 'user 9',
-                points: 0},
-
-            {id:9,
-                name: 'user 10',
-                points: 0},
-
-            {id:10,
-                name: 'user 11',
-                points: 0},
-
-            {id:11,
-                name: 'user 12',
-                points: 0},
-
-            {id:12,
-                name: 'user 13',
-                points: 0},
-
-            {id:13,
-                name: 'user 14',
-                points: 0},
-
-            {id:14,
-                name: 'user 15',
-                points: 0},
-
-            {id:15,
-                name: 'user 16',
-                points: 0},
-
-            {id:16,
-                name: 'user 17',
-                points: 0},
-
-            {id:17,
-                name: 'user 18',
-                points: 0},
-
-            {id:18,
-                name: 'user 19',
-                points: 0}
-        ]
     };
+    componentWillMount(){
+        window.socket.on("new-user-connected", (users) => {
+            this.setState({
+                userList: users
+            })
+        });
+        window.socket.on("user-disconnected", (users) => {
+            this.setState({
+                userList: users
+            })
+        })
+    }
+
+    componentWillUnmount(){
+        window.socket.off("new-user-connected");
+        window.socket.off("user-disconnected");
+    }
 
     render(){
         return(
@@ -155,9 +100,19 @@ class PedingRoom extends Component{
 
 
             </Div>
+        )
+    }
 
-        )}}
-export default PedingRoom;
+
+}
+const mapStateToProps = (state) => {
+    return {
+        nickName: state.currentUser.nickName
+    }
+};
+
+export default connect(mapStateToProps, null)(PedingRoom);
+
 
 
 

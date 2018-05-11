@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server, {
-    origins: '*:*'
+    path: '/room/'
 });
 const cors = require('cors');
 app.use(cors());
@@ -18,13 +18,26 @@ const gameRoute = require('./routes/games');
 const gameRoom = require('./routes/rooms');
 
 let online = 0;
+io.on("connection", (client) => {
+    room.connect(client);
+    room.answer(client);
+})
+
+const users = [];
 io.on('connection', (client) => {
+    const name = client.handshake.query.name;
+    users.push(name);
     console.log("User connected");
-    console.log(++online);
-    client.broadcast.emit("change-online", online);
+    console.log(users);
+    console.log(name);
+    io.emit("new-user-connected", users);
     client.on("disconnect", () => {
-        console.log(--online);
-        client.broadcast.emit("change-online", online);
+        const index = users.indexOf(name);
+        if(index < 0){
+            return;
+        }
+        users.splice(index, 1);
+        io.emit("user-disconnected", users);
     });
 });
 
@@ -41,7 +54,7 @@ app.use('/games/', gameRoute);
 
 app.use('/rooms/', gameRoom);
 
-app.use(express.static('./build'));
+app.use(express.static('./kahoot-project/build'));
 
 app.use((err, req, res, next) => {
     res.json({

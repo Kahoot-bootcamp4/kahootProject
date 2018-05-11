@@ -15,7 +15,7 @@ const Name = styled.div`
 
 
 
- class UserName extends Component {
+class UserName extends Component {
     state = {
         nickName: this.props.nickName
     };
@@ -24,49 +24,58 @@ const Name = styled.div`
             [field]: e.target.value
         })
     };
-     addNickName = () => {
-         this.props.addNickName({
-             nickName: this.state.nickName
-              })
-     };
+    addNick = () => {
+        this.props.addNickName({
+            nickName: this.state.nickName
+        });
+        this.props.addCurrentName({
+            nickName: this.state.nickName
+        });
+        this.props.history.push('/common')
+    };
+
+
 
     render() {
         const {nickName} = this.state;
         console.log(nickName);
         return (
             <DivName>
-            <Name>
-                <Input type="text"
-                       className="login__name"
-                       placeholder="Name"
-                       value={nickName}
-                       onChange={this.changeInput.bind(this, 'nickName')}
-                />
-                <br/>
-                <Button width={40}  onClick={this.login}>Enter</Button>
-            </Name>
+                <Name>
+                    <Input type="text"
+                           className="login__name"
+                           placeholder="nickName"
+                           value={this.state.nickName}
+                           onChange={this.changeInput.bind(this, 'nickName')}
+                    />
+                    <br/>
+                    <Button height={30}  onClick={this.addNick}>Enter</Button>
+                </Name>
             </DivName>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        nickName: state.currentUser.nickName
-    }
-};
+
+
 const dispatchToProps = (dispatch) => {
     return {
         addNickName: ({nickName}) => {
             dispatch({
-                type: "USER_CHANGE_NAME",
+                type: "ADD_NEW_NICK_NAME",
                 nickName
             });
         },
+        addCurrentName: ({nickName}) => {
+            dispatch({
+                type: "USER_CHANGE_NAME",
+                nickName
+            });
+    }
+
     }
 
 };
 
 
-export default connect(mapStateToProps, dispatchToProps)(UserName);
-
+export default connect(null, dispatchToProps)(UserName);
