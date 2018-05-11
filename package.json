@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node ./server/app.js && cd kahoot-project && react-scripts build",
+    "start": "cd kahoot-project && react-scripts build && cd ../ && node ./server/app.js",
     "dev": "nodemon --inspect ./server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "react": "react-scripts start"
