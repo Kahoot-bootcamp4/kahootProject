@@ -74,6 +74,9 @@ const controller = {
         Rooms.find({}).exec()
             .then((rooms) => {
                 if ( rooms.map((room) => {
+                    if(room.gameID === req.body.pinCode){
+                        req.data = {roomID: room._id.toJSON() };
+                    }
                     return room.gameID
                 }).includes(req.body.pinCode) ){
                     next()
