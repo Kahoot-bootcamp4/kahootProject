@@ -7,7 +7,7 @@ import PedingRoom from '../PendingRoom';
 import socket from 'socket.io-client';
 import {connect} from 'react-redux';
 
-console.log(this.props);
+
 
 class Common extends Component {
     state = {
