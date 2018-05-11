@@ -36,6 +36,7 @@ class UserStartPage extends Component {
                 if(data.status === 200) {
                     console.log("OK");
                      this.props.addPin(data.data.token);
+                     this.props.addId(data.data.roomID);
 
                     this.props.history.push('/name')
                 }
@@ -80,6 +81,12 @@ const dispatchToProps = (dispatch) => {
             dispatch({
                 type: "ADD_NEW_PINCODE",
                 pinCode
+            });
+        },
+        addId: (roomID) => {
+            dispatch({
+                type: "ADD_NEW_ROOMID",
+                roomID
             });
         },
     }

@@ -19,7 +19,8 @@ class Common extends Component {
         window.socket = socket({
             path: "/room/",
             query: {
-                name: nickName
+                name: nickName,
+                roomID: this.props.roomID
             }
         });
     }
@@ -48,7 +49,8 @@ class Common extends Component {
 }
 const mapStateToProps = (state) => {
     return {
-        nickName: state.currentUser.nickName
+        nickName: state.currentUser.nickName,
+        roomID: state.currentUser.roomID
     }
 };
 
