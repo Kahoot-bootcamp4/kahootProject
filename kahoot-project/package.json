@@ -2,6 +2,7 @@
   "name": "kahoot-project",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:9999",
   "dependencies": {
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -19,6 +20,5 @@
     "build2": "react-scripts build && cd ../ && node ./server/app.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:9999"
+  }
 }

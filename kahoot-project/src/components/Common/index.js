@@ -4,13 +4,29 @@ import ResultPage from '../resultPage';
 import TestingPage from '../users_testing_page';
 import PedingRoom from '../PendingRoom';
 
+import socket from 'socket.io-client';
+import {connect} from 'react-redux';
 
 
 
 class Common extends Component {
     state = {
-        compVisible: "w3"
+        compVisible: "w1"
     };
+
+    componentWillMount(){
+        const {nickName} = this.props;
+        window.socket = socket({
+            path: "/room/",
+            query: {
+                name: nickName
+            }
+        });
+    }
+
+    componentWillUnmount(){
+        // disconnect socket
+    }
 
     render(){
         return(
@@ -24,9 +40,17 @@ class Common extends Component {
                     this.state.compVisible==="w3"? <ResultPage/> : ""
                 }
 
+
             </div>
         )
     }
 
 }
-export default Common;
+const mapStateToProps = (state) => {
+    return {
+        nickName: state.currentUser.nickName
+    }
+};
+
+export default connect(mapStateToProps, null)(Common);
+// export default Common;

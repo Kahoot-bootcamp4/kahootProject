@@ -1,20 +1,40 @@
 import  React, {Component} from "react";
 import styled from 'styled-components';
 
+import {connect} from 'react-redux';
+
+
 
 
 const Div = styled.div`
 background-color: #e7e8ea;
 height: 100vh;
-`
+`;
 
 
 
 class PedingRoom extends Component{
     state = {
-        currentUser: 'Ivanko',
+        currentUser: this.props.nickName,
         userList: ['Jim', 'Bim', 'Sim', 'Kim', 'Vim', 'Lim', 'Fim', 'Rim', 'Pim', 'Him']
     };
+    componentWillMount(){
+        window.socket.on("new-user-connected", (users) => {
+            this.setState({
+                userList: users
+            })
+        });
+        window.socket.on("user-disconnected", (users) => {
+            this.setState({
+                userList: users
+            })
+        })
+    }
+
+    componentWillUnmount(){
+        window.socket.off("new-user-connected");
+        window.socket.off("user-disconnected");
+    }
 
     render(){
         return(
@@ -30,7 +50,15 @@ class PedingRoom extends Component{
             </Div>
         )
     }
-}
 
-export default PedingRoom;
+
+}
+const mapStateToProps = (state) => {
+    return {
+        nickName: state.currentUser.nickName
+    }
+};
+
+export default connect(mapStateToProps, null)(PedingRoom);
+
 
