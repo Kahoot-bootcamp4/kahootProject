@@ -32,11 +32,11 @@ const controller = {
         })
     },
     readOne(req, res,next){
-        Roooms.findById(req.params.id)
+        Rooms.findById(req.params.id)
             .then((rooms) => {
-            req.data = rooms;
-        next();
-    })
+                req.data = rooms;
+                next();
+            })
     .catch((e) => {
             next(e)
         })
