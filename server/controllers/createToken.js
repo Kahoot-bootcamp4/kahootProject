@@ -7,7 +7,9 @@ const createToken = (req, res, next) => {
         }, KEY, {
             expiresIn: 180
         }, (err, token) => {
-            req.data = token;
+            req.data = {token,
+                status: 200
+            };
             next()
     })
 }
