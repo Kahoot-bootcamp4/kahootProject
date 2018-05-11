@@ -15,7 +15,7 @@ const Name = styled.div`
 
 
 
- class UserName extends Component {
+class UserName extends Component {
     state = {
         nickName: this.props.nickName
     };
@@ -24,27 +24,27 @@ const Name = styled.div`
             [field]: e.target.value
         })
     };
-     addNickName = () => {
-         this.props.addNickName({
-             nickName: this.state.nickName
-              })
-     };
+    addNickName = () => {
+        this.props.addNickName({
+            nickName: this.state.nickName
+        })
+    };
 
     render() {
         const {nickName} = this.state;
         console.log(nickName);
         return (
             <DivName>
-            <Name>
-                <Input type="text"
-                       className="login__name"
-                       placeholder="Name"
-                       value={nickName}
-                       onChange={this.changeInput.bind(this, 'password')}
-                />
-                <br/>
-                <Button width={40}  onClick={this.login}>Enter</Button>
-            </Name>
+                <Name>
+                    <Input type="text"
+                           className="login__name"
+                           placeholder="nickName"
+                           value={this.state.nickName}
+                           onChange={this.changeInput.bind(this, 'nickName')}
+                    />
+                    <br/>
+                    <Button height={30}  onClick={this.addNickName}>Enter</Button>
+                </Name>
             </DivName>
         )
     }
@@ -60,7 +60,7 @@ const dispatchToProps = (dispatch) => {
     return {
         addNickName: ({nickName}) => {
             dispatch({
-                type: "USER_CHANGE_NAME",
+                type: "ADD_NEW_NICK_NAME",
                 nickName
             });
         },
@@ -70,4 +70,3 @@ const dispatchToProps = (dispatch) => {
 
 
 export default connect(mapStateToProps, dispatchToProps)(UserName);
-
