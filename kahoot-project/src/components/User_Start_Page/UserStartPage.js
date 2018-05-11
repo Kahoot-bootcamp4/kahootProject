@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {Button, Input} from '../UI/index';
 import {connect} from 'react-redux';
 import store from "../store/DisabledStore";
+import { Route, Redirect } from 'react-router'
 
 
 
@@ -20,10 +21,10 @@ class UserStartPage extends Component {
         });
     };
 
-    addPin = () => {
-        fetch('/games/check/', {
+    checkPin = () => {
+        fetch('https://kahoot-bootcamp4.herokuapp.com/rooms/check/', {
             method: 'POST',
-            body: JSON.stringify(this.state.pinCode),
+            body: JSON.stringify({pinCode: this.state.pinCode}),
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -32,9 +33,12 @@ class UserStartPage extends Component {
             .then((res)=>res.json())
             .then((data)=>{
 
-                // console.log(data);
-                if(data.data.status === 200) {
+                console.log(data);
+                if(data.status === 200) {
                     console.log("OK");
+                     this.props.addPin(data.data.token);
+
+                    this.props.history.push('/name')
                 }
                 else {
                     // this.setState({
@@ -45,9 +49,7 @@ class UserStartPage extends Component {
 
             })
             .catch((e)=>{this.setState({rendError: true})});
-        // this.props.addPin({
-        //     pinCode: this.state.pinCode
-        // })
+
 
     };
 
@@ -62,7 +64,7 @@ class UserStartPage extends Component {
                        onChange={this.changeInput.bind(this, 'pinCode')}
                 />
                 <br/>
-                <Button width={10} height={30} onClick={this.addPin}>Enter</Button>
+                <Button width={10} height={30} onClick={this.checkPin}>Enter</Button>
             </div>
         )
     }

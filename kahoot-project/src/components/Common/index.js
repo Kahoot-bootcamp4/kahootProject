@@ -9,19 +9,19 @@ import PedingRoom from '../PendingRoom';
 
 class Common extends Component {
     state = {
-        compVisible: "w"
+        compVisible: "w3"
     };
 
     render(){
         return(
             <div>{
-                this.state.compVisible==="w"? <PedingRoom/> : ""
+                this.state.compVisible==="w1"? <PedingRoom/> : ""
                 }
                 {
-                    this.state.compVisible==="w"? <TestingPage/> : ""
+                    this.state.compVisible==="w2"? <TestingPage/> : ""
                 }
                 {
-                    this.state.compVisible==="w"? <ResultPage/> : ""
+                    this.state.compVisible==="w3"? <ResultPage/> : ""
                 }
 
             </div>
