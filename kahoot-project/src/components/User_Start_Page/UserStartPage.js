@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import styled from 'styled-components';
 import {Button, Input} from '../UI/index';
 import {connect} from 'react-redux';
-import store from "../store/DisabledStore";
-import { Route, Redirect } from 'react-router'
+
 
 
 
