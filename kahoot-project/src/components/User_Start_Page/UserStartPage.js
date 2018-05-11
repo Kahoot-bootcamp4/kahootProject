@@ -67,7 +67,7 @@ const Pin = styled.div`
                 <Input type="text"
                        className="login__name"
                        placeholder="Pin"
-                       value={login}
+                       value={this.state.pinCode}
                        onChange={this.changeInput.bind(this, 'login')}
                 />
                <br/>

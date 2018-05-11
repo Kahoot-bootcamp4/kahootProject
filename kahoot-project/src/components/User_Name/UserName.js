@@ -39,7 +39,7 @@ const Name = styled.div`
                 <Input type="text"
                        className="login__name"
                        placeholder="Name"
-                       value={password}
+                       value={nickName}
                        onChange={this.changeInput.bind(this, 'password')}
                 />
                 <br/>
