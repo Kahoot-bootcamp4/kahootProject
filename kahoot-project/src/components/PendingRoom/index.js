@@ -1,5 +1,6 @@
 import  React, {Component} from "react";
 import styled from 'styled-components';
+import {connect} from 'react-redux';
 
 
 //
@@ -21,7 +22,6 @@ const Ul = styled.div`
   flex-wrap: wrap;
   padding: 50px 0;
 `
-import {connect} from 'react-redux';
 
 
 const Div = styled.div`
@@ -91,8 +91,8 @@ class PedingRoom extends Component{
                 <P>Waiting for other students!!!</P>
                 <Container>
                     <Ul>
-                        {this.state.users.map((users, index) => {
-                            return <Li>{this.state.users[index].name.toUpperCase()}</Li>
+                        {this.state.userList.map((users, index) => {
+                            return <Li>{users.toUpperCase()}</Li>
                         })}
                     </Ul>
                 </Container>
