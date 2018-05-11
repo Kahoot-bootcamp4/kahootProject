@@ -68,11 +68,11 @@ class UserStartPage extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        pinCode: state.users.pinCode
-    }
-};
+// const mapStateToProps = (state) => {
+//     return {
+//         pinCode: state.users.pinCode
+//     }
+// };
 const dispatchToProps = (dispatch) => {
     return {
         addPin: ({pinCode}) => {
@@ -86,4 +86,4 @@ const dispatchToProps = (dispatch) => {
 };
 
 
-export default connect(mapStateToProps, dispatchToProps)(UserStartPage);
+export default connect(null, dispatchToProps)(UserStartPage);
