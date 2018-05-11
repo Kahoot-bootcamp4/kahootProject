@@ -24,11 +24,17 @@ class UserName extends Component {
             [field]: e.target.value
         })
     };
-    addNickName = () => {
+    addNick = () => {
         this.props.addNickName({
             nickName: this.state.nickName
-        })
+        });
+        this.props.addCurrentName({
+            nickName: this.state.nickName
+        });
+        this.props.history.push('/common')
     };
+
+
 
     render() {
         const {nickName} = this.state;
@@ -43,7 +49,7 @@ class UserName extends Component {
                            onChange={this.changeInput.bind(this, 'nickName')}
                     />
                     <br/>
-                    <Button height={30}  onClick={this.addNickName}>Enter</Button>
+                    <Button height={30}  onClick={this.addNick}>Enter</Button>
                 </Name>
             </DivName>
         )
@@ -51,11 +57,7 @@ class UserName extends Component {
 }
 
 
-const mapStateToProps = (state) => {
-    return {
-        nickName: state.currentUser.nickName
-    }
-};
+
 const dispatchToProps = (dispatch) => {
     return {
         addNickName: ({nickName}) => {
@@ -64,9 +66,16 @@ const dispatchToProps = (dispatch) => {
                 nickName
             });
         },
+        addCurrentName: ({nickName}) => {
+            dispatch({
+                type: "USER_CHANGE_NAME",
+                nickName
+            });
+    }
+
     }
 
 };
 
 
-export default connect(mapStateToProps, dispatchToProps)(UserName);
+export default connect(null, dispatchToProps)(UserName);

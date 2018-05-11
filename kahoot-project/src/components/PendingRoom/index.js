@@ -1,6 +1,9 @@
 import  React, {Component} from "react";
 import styled from 'styled-components';
 
+import {connect} from 'react-redux';
+
+
 
 
 const Div = styled.div`
@@ -12,7 +15,7 @@ height: 100vh;
 
 class PedingRoom extends Component{
     state = {
-        currentUser: 'Ivanko',
+        currentUser: this.props.nickName,
         userList: ['Jim', 'Bim', 'Sim', 'Kim', 'Vim', 'Lim', 'Fim', 'Rim', 'Pim', 'Him']
     };
 
@@ -30,7 +33,15 @@ class PedingRoom extends Component{
             </Div>
         )
     }
-}
 
-export default PedingRoom;
+
+}
+const mapStateToProps = (state) => {
+    return {
+        nickName: state.currentUser.nickName
+    }
+};
+
+export default connect(mapStateToProps, null)(PedingRoom);
+
 

@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server, {
-    origins: '*:*'
+    path: '/room/'
 });
 const cors = require('cors');
 app.use(cors());
@@ -21,6 +21,7 @@ let online = 0;
 io.on('connection', (client) => {
     console.log("User connected");
     console.log(++online);
+    console.log(client.handshake.query.name);
     client.broadcast.emit("change-online", online);
     client.on("disconnect", () => {
         console.log(--online);
