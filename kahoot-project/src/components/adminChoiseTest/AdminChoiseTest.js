@@ -7,7 +7,7 @@ const Wraper = styled.div`
     padding-top: 100px;
     display:block;
     width: 100%;
-    //height: 100vh;
+    height: 100vh;
     background-color: #e7e8ea;
 `;
 
@@ -27,6 +27,10 @@ const P  = styled.p`
     color: #7e2aa7;
     width: 397.2px;
         `;
+
+const Div  = styled.div`
+margin-left: 180px;
+`
 
 
 class AdminChoiseTest extends Component{
@@ -127,7 +131,7 @@ class AdminChoiseTest extends Component{
     render(){
         return(
             <Wraper>
-                <Link to='/create'><Button >Create Test</Button></Link>
+                <Div> <Link to='/create'><Button>Create Test</Button></Link></Div>
                 <Ul>
                     {this.state.tests.map((key,i)=>{
                         return (<Li id={key._id}>
