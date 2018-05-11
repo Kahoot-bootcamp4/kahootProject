@@ -18,6 +18,10 @@ const gameRoute = require('./routes/games');
 const gameRoom = require('./routes/rooms');
 
 let online = 0;
+io.on("connection", (client) => {
+    room.connect(client);
+    room.answer(client);
+})
 
 const users = [];
 io.on('connection', (client) => {
