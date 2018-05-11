@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import currentUserReducer from './currentUser'
 
+import currentUserReducer from './currentUser'
 import usersReducer from './users';
 
 

@@ -15,10 +15,10 @@ class Common extends Component {
     render(){
         return(
             <div>{
-                this.state.compVisible==="w1"? <PedingRoom/> : ""
+                this.state.compVisible==="w"? <PedingRoom/> : ""
                 }
                 {
-                    this.state.compVisible==="w1"? <TestingPage/> : ""
+                    this.state.compVisible==="w"? <TestingPage/> : ""
                 }
                 {
                     this.state.compVisible==="w"? <ResultPage/> : ""
