@@ -54,43 +54,83 @@ class AdminUser extends Component{
         pin: 35465,
          users: [
              {id:0,
-                 name: 'user1',
+                 name: 'user 1',
                  points: 0},
 
              {id:1,
-                 name: 'user2',
+                 name: 'user 2',
                  points: 0},
 
              {id:2,
-                 name: 'user3',
+                 name: 'user 3',
                  points: 0},
 
              {id:3,
-                 name: 'user4',
+                 name: 'user 4',
                  points: 0},
 
              {id:4,
-                 name: 'user5',
+                 name: 'user 5',
                  points: 0},
 
              {id:5,
-                 name: 'user6',
+                 name: 'user 6',
                  points: 0},
 
              {id:6,
-                 name: 'user7',
+                 name: 'user 7',
                  points: 0},
 
              {id:7,
-                 name: 'user8',
+                 name: 'user 8',
                  points: 0},
 
              {id:8,
-                 name: 'user9',
+                 name: 'user 9',
                  points: 0},
 
              {id:9,
-                 name: 'user10',
+                 name: 'user 10',
+                 points: 0},
+
+             {id:10,
+                 name: 'user 11',
+                 points: 0},
+
+             {id:11,
+                 name: 'user 12',
+                 points: 0},
+
+             {id:12,
+                 name: 'user 13',
+                 points: 0},
+
+             {id:13,
+                 name: 'user 14',
+                 points: 0},
+
+             {id:14,
+                 name: 'user 15',
+                 points: 0},
+
+             {id:15,
+                 name: 'user 16',
+                 points: 0},
+
+             {id:16,
+                 name: 'user 17',
+                 points: 0},
+
+             {id:17,
+                 name: 'user 18',
+                 points: 0},
+
+             {id:18,
+                 name: 'user 19',
+                 points: 0},
+
+             {id:19,
+                 name: 'user 20',
                  points: 0}
          ]
     };

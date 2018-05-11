@@ -31,10 +31,10 @@ const BoxAnswer = styled.div`
   
     display: flex;
    
-    margin: auto;
+    margin: 20px;
     vertical-align: center;
     width: 47%;
-    height: 90px;
+    height: 350px;
     background-color: ${color[s]};
 `;
 
@@ -43,49 +43,49 @@ const BoxAnswer2 = styled.div`
     display: flex;
     /*justify-content: center;*/
 
-    margin: auto;
+    margin: 20px;
     vertical-align: center;
     width: 47%;
-    height: 90px;
+    height: 350px;
     background-color: ${color[s+1]};
 `;
 
 const BoxAnswer3 = styled.div`
-    /*width: 50px;*/
+    
     display: flex;
     /*justify-content: center;*/
 
-    margin: auto;
+    margin: 20px;
     vertical-align: center;
     width: 47%;
-    height: 90px;
+    height: 350px;
     background-color: ${color[s+2]};
 `;
 
 const BoxAnswer4 = styled.div`
     display: flex;
-    margin: auto;
+    margin: 20px;
     vertical-align: center;
     width: 47%;
-    height: 90px;
+    height: 350px;
     background-color: ${color[s+3]};
 `;
 
 const BoxWrap = styled.div`
-    background-color: #f8fff9;
+    background-color: #e7e8ea;
+    height: 100vh;
+    padding: 2rem;
 
 `;
 
 const Box = styled.div`
-    width: 600px;
-    height: 400px;
     margin: auto;
-    border: #9e77f1 2px solid;
     background-color: #e7e7e7;
-
 `;
 
-
+const P = styled.div`
+margin: auto;
+`
 const TestingPage = (props) => {
     console.log(props);
 
@@ -95,15 +95,15 @@ const TestingPage = (props) => {
         <BoxWrap>
             <Box>
 
-                <h2>Testing </h2>
+                <h2>TESTING </h2>
 
                 <Timer />
 
                 <TestBox>
-                    <BoxAnswer id="a" >Первый </BoxAnswer>
-                    <BoxAnswer2 id="b" >Второй</BoxAnswer2>
-                    <BoxAnswer3 id="c" >Третий</BoxAnswer3>
-                    <BoxAnswer4 id="d" >Четвертый</BoxAnswer4>
+                    <BoxAnswer id="a" ><P>ПЕРВЫЙ</P></BoxAnswer>
+                    <BoxAnswer2 id="b" ><P>ВТОРОЙ</P></BoxAnswer2>
+                    <BoxAnswer3 id="c" ><P>ТРЕТИЙ</P></BoxAnswer3>
+                    <BoxAnswer4 id="d" ><P>ЧЕТВЕРТЫЙ</P></BoxAnswer4>
 
                 </TestBox>
             </Box>
