@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import  {Button} from "../UI";
 import { Link } from 'react-router-dom';
+import {connect} from 'react-redux';
 
 const Wraper = styled.div`
     padding-top: 100px;
@@ -131,7 +132,12 @@ class AdminChoiseTest extends Component{
     render(){
         return(
             <Wraper>
-                <Div> <Link to='/create'><Button>Create Test</Button></Link></Div>
+                <Div>
+                    {/*<Link to='/create'>*/}
+
+                    <Button onClick={()=>{this.props.history.push('/create')}} >Create Test</Button>
+                {/*</Link>*/}
+                </Div>
                 <Ul>
                     {this.state.tests.map((key,i)=>{
                         return (<Li id={key._id}>
@@ -149,4 +155,12 @@ class AdminChoiseTest extends Component{
 
 }
 
-export default AdminChoiseTest;
+
+
+const mapStateToProps = (state) => {
+    return {
+        // nickName: state.currentUser.nickName
+    }
+};
+// export default AdminChoiseTest;
+export default connect(mapStateToProps, null)(AdminChoiseTest);

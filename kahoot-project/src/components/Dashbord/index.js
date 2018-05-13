@@ -4,6 +4,8 @@ import  React, {Component} from "react";
 import styled from 'styled-components';
 import {Button} from "../UI";
 
+import {connect} from 'react-redux';
+
 
 const Container = styled.div`
     font-style: italic;
@@ -51,7 +53,7 @@ justify-content: space-between;
 
 class AdminUser extends Component{
     state = {
-        pin: 35465,
+        pin: this.props.nickName,
          users: [
              {id:0,
                  name: 'user 1',
@@ -73,65 +75,7 @@ class AdminUser extends Component{
                  name: 'user 5',
                  points: 0},
 
-             {id:5,
-                 name: 'user 6',
-                 points: 0},
 
-             {id:6,
-                 name: 'user 7',
-                 points: 0},
-
-             {id:7,
-                 name: 'user 8',
-                 points: 0},
-
-             {id:8,
-                 name: 'user 9',
-                 points: 0},
-
-             {id:9,
-                 name: 'user 10',
-                 points: 0},
-
-             {id:10,
-                 name: 'user 11',
-                 points: 0},
-
-             {id:11,
-                 name: 'user 12',
-                 points: 0},
-
-             {id:12,
-                 name: 'user 13',
-                 points: 0},
-
-             {id:13,
-                 name: 'user 14',
-                 points: 0},
-
-             {id:14,
-                 name: 'user 15',
-                 points: 0},
-
-             {id:15,
-                 name: 'user 16',
-                 points: 0},
-
-             {id:16,
-                 name: 'user 17',
-                 points: 0},
-
-             {id:17,
-                 name: 'user 18',
-                 points: 0},
-
-             {id:18,
-                 name: 'user 19',
-                 points: 0},
-
-             {id:19,
-                 name: 'user 20',
-                 points: 0}
          ]
     };
 
@@ -140,11 +84,12 @@ class AdminUser extends Component{
 
             <Div>
 
-            <H1>game code: {this.state.pin}</H1>
+            <H1>game code: {console.log(this.props.nickName)}</H1>
 
             <Container>
             <Ul>
                 {this.state.users.map((users, index) => {
+
                     return <Li>{this.state.users[index].name.toUpperCase()}</Li>
                 })}
             </Ul>
@@ -158,6 +103,16 @@ class AdminUser extends Component{
 
             </Div>
 
-        )}}
-            export default AdminUser;
+        )}
+}
+            // export default AdminUser;
+
+const mapStateToProps = (state) => {
+    return {
+        nickName: state.currentUser.nickName
+
+    }
+};
+
+export default connect(mapStateToProps, null)(AdminUser);
 
