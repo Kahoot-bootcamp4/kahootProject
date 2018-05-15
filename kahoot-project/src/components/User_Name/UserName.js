@@ -31,7 +31,7 @@ class UserName extends Component {
         this.props.addCurrentName({
             nickName: this.state.nickName
         });
-        this.props.history.push('/common')
+        this.props.history.push('/common/pending')
     };
 
 

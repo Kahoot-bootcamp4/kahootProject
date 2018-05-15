@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Route} from "react-router-dom";
 
 import ResultPage from '../resultPage';
 import TestingPage from '../users_testing_page';
@@ -6,12 +7,14 @@ import PedingRoom from '../PendingRoom';
 
 import socket from 'socket.io-client';
 import {connect} from 'react-redux';
+import Dashbord from "../Dashbord";
 
 
 
 class Common extends Component {
     state = {
-        compVisible: "w1"
+        // compVisible: "w4"
+        compVisible: this.props.compVisible
     };
 
     componentWillMount(){
@@ -31,17 +34,12 @@ class Common extends Component {
 
     render(){
         return(
-            <div>{
-                this.state.compVisible==="w1"? <PedingRoom/> : ""
-                }
-                {
-                    this.state.compVisible==="w2"? <TestingPage/> : ""
-                }
-                {
-                    this.state.compVisible==="w3"? <ResultPage/> : ""
-                }
 
-
+            <div>
+                <Route path='/common/dashbord' component={Dashbord} />
+                <Route path='/common/pending' component={PedingRoom} />
+                <Route path='/common/testing' component={TestingPage} />
+                <Route path='/common/result' component={ResultPage} />
             </div>
         )
     }
@@ -50,9 +48,21 @@ class Common extends Component {
 const mapStateToProps = (state) => {
     return {
         nickName: state.currentUser.nickName,
-        roomID: state.currentUser.roomID
+        roomID: state.currentUser.roomID,
+        compVisible: state.currentUser.compVisible
     }
 };
 
-export default connect(mapStateToProps, null)(Common);
+const dispatchToProps = (dispatch) => {
+    return {
+        setQuestions(questions){
+            dispatch({
+                type: "SET_QUESTIONS",
+                questions
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, dispatchToProps)(Common);
 // export default Common;

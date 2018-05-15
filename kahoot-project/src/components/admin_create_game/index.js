@@ -120,6 +120,24 @@ class AdminCreateGame extends Component {
         };
     };
 
+
+    // componentWillMount(){
+    //     this.getGame();
+    // }
+    //
+    // getGame = () => {
+    //
+    //     fetch('https://kahoot-bootcamp4.herokuapp.com/games/', {
+    //         method: 'GET',
+    //         body: JSON.stringify(this.state),
+    //         headers: {
+    //             Accept: 'application/json',
+    //             'Content-Type': 'application/json',
+    //         }
+    //     })
+    //
+    // };
+
     sendGame = () => {
         let newGame = this.state;
         console.log(newGame);

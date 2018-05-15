@@ -247,12 +247,14 @@ class TestingPage extends Component {
             mark: false,
             description: 'ИМЯ ИГРЫ',
             games: [
-                { question:"Вопрос 1",
+                { question:`What is the output of this code? \nfunction bin (num){ \nwar res = \"\", \nwhile (num>0){\nres=num%2+res \nnum=Math.floor(num/2)\n } \nreturn res \n} \ndocument.write(bin(6))`,
+
+
                     answers:[
-                        {var:"Ответ 1",correct: true },
-                        {var:"Ответ 2",correct: false},
-                        {var:"Ответ 3",correct: false},
-                        {var:"Ответ 4",correct: false}
+                        {var:"110",correct: true },
+                        {var:"100",correct: false},
+                        {var:"001",correct: false},
+                        {var:"101",correct: false}
                     ]
                 }
             ]
@@ -262,11 +264,18 @@ class TestingPage extends Component {
         if(this.state.mark === false) {
             let choice = event.target.innerHTML;
             console.log(choice);
+            // if(choice==110){alert("CORRECT")}
             this.setState({
                 mark: true
             })
         }
     };
+
+    componentDidMount(){
+        this.setState({
+            games:this.props.questions
+        })
+    }
 
     // console.log(props);
 
@@ -300,4 +309,13 @@ class TestingPage extends Component {
         )}
 }
 
-export default TestingPage;
+ // export default TestingPage;
+
+const mapStateToProps = (state) => {
+    return {
+        questions: state.questions
+
+    }
+};
+
+export default connect(mapStateToProps, null)(TestingPage);
