@@ -155,6 +155,7 @@ import React, {Component} from 'react';
 import Timer from "../Timer/Timer";
 import './index.css'
 import styled from 'styled-components';
+import {connect} from 'react-redux';
 
 
 
@@ -183,7 +184,10 @@ let order4 = Math.floor(Math.random()*10);
 const BoxAnswer = styled.div`
   
     display: flex;
-   
+   justify-content: center;
+   align-items: center;
+   font-size: 300%;
+   font-weight: bold;
     margin: auto;
     vertical-align: center;
     width: 47%;
@@ -193,9 +197,13 @@ const BoxAnswer = styled.div`
 `;
 
 const BoxAnswer2 = styled.div`
-    /*width: 50px;*/
+   
     display: flex;
-    /*justify-content: center;*/
+    justify-content: center;
+   align-items: center;
+   font-size: 300%;
+   font-weight: bold;
+   
     margin: auto;
     vertical-align: center;
     width: 47%;
@@ -205,9 +213,12 @@ const BoxAnswer2 = styled.div`
 `;
 
 const BoxAnswer3 = styled.div`
-    /*width: 50px;*/
+    
     display: flex;
-    /*justify-content: center;*/
+    justify-content: center;
+   align-items: center;
+   font-size: 300%;
+   font-weight: bold;
     margin: auto;
     vertical-align: center;
     width: 47%;
@@ -218,6 +229,10 @@ const BoxAnswer3 = styled.div`
 
 const BoxAnswer4 = styled.div`
     display: flex;
+    justify-content: center;
+   align-items: center;
+   font-size: 300%;
+   font-weight: bold;
     margin: auto;
     vertical-align: center;
     width: 47%;
@@ -232,7 +247,7 @@ const BoxWrap = styled.div`
 
 const Box = styled.div`
     width: 600px;
-    height: 400px;
+    //height: 400px;
     margin: auto;
     border: #9e77f1 2px solid;
     background-color: #e7e7e7;
@@ -247,7 +262,8 @@ class TestingPage extends Component {
             mark: false,
             description: 'ИМЯ ИГРЫ',
             games: [
-                { question:`What is the output of this code? \nfunction bin (num){ \nwar res = \"\", \nwhile (num>0){\nres=num%2+res \nnum=Math.floor(num/2)\n } \nreturn res \n} \ndocument.write(bin(6))`,
+
+                { questionText:`What is the output of this code? \nfunction bin (num){ \nwar res = \"\", \nwhile (num>0){\nres=num%2+res \nnum=Math.floor(num/2)\n } \nreturn res \n} \ndocument.write(bin(6))`,
 
 
                     answers:[
@@ -255,16 +271,20 @@ class TestingPage extends Component {
                         {var:"100",correct: false},
                         {var:"001",correct: false},
                         {var:"101",correct: false}
+
                     ]
-                }
+                },{},{}
             ]
         };
     };
     choiceAnswer = (event)=> {
         if(this.state.mark === false) {
             let choice = event.target.innerHTML;
+            let corr = this.state.games[0].answers[0].var;
+            console.log(corr)
             console.log(choice);
-            // if(choice==110){alert("CORRECT")}
+            if(choice==corr){alert("CORRECT")}
+            else (alert("NOT CORRECT"))
             this.setState({
                 mark: true
             })
@@ -272,15 +292,34 @@ class TestingPage extends Component {
     };
 
     componentDidMount(){
-        this.setState({
-            games:this.props.questions
+
+        fetch('/games/5afac2581652e80014d995eb',{
+            method: "GET",
+            headers:{
+                'Content-Type': 'application/json'
+            }
         })
+            .then(res => res.json())
+            .then( game => {
+                this.setState({
+                    games:game.data.games,
+                    description: game.data.description
+                })
+            })
+            .catch(e=>{console.log(e)});
+
     }
 
-    // console.log(props);
+
 
     render () {
-        let Question = this.state.games[0].question;
+        // console.log(this.state.games)
+         console.log(this.state.games);
+         console.log(this.state.games[1].questionText);
+
+         let Question = this.state.games[0].questionText;
+
+
         return (
 
             <BoxWrap>
@@ -313,7 +352,8 @@ class TestingPage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        questions: state.questions
+         questions: state.questions,
+        id: state._id
 
     }
 };

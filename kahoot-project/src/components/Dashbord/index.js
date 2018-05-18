@@ -141,10 +141,10 @@ const mapStateToProps = (state) => {
 };
 const dispatchToProps = (dispatch) => {
     return {
-        shiftRoom: ({compVisible}) => {
+        shiftRoom: ({roomID}) => {
             dispatch({
-                type: "ADD_COMPVISIBLE",
-                compVisible
+                type: "ADD_NEW_ROOMID",
+                roomID
             });
         },
         shift: ({questions}) => {
