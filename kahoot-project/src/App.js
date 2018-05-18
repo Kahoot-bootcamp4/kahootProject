@@ -31,7 +31,7 @@ const PrivateRoute = (props) => {
         // Перенаправляем на страницу логина
         return <Redirect to="/login" />
     }
-}
+};
 
 
 class App extends Component {
@@ -42,16 +42,16 @@ class App extends Component {
                     <div className="App">
                         <div className='links'>
                             <NavLink to='/'>/==start==/</NavLink>
-                            <NavLink to='/test'>Test</NavLink>
+                            <NavLink to='/common/testing'>Test</NavLink>
                             <NavLink to='/create'>create</NavLink>
                             <NavLink to='/edit'>edit</NavLink>
                             <NavLink to='/login'>Login</NavLink>
                             <NavLink to='/start'>Start</NavLink>
                             <NavLink to='/name'>Name</NavLink>
-                            <NavLink to='/result'>result</NavLink>
-                            <NavLink to='/pending'>pending</NavLink>
+                            <NavLink to='/common/result'>result</NavLink>
+                            <NavLink to='/common/pending'>pending</NavLink>
                             <NavLink to='/choise'>choise</NavLink>
-                            <NavLink to='/dashbord'>dashbord</NavLink>
+                            <NavLink to='/common/dashbord'>dashbord</NavLink>
                             <NavLink to='/common'>Common</NavLink>
                         </div>
 
@@ -61,12 +61,9 @@ class App extends Component {
                             <Route path='/name' component={UserName} />
                             <PrivateRoute path='/create' component={AdminCreateGame} />
                             <PrivateRoute path='/edit/:id' component={AdminEditGame} />
-                            <Route path='/test' component={TestingPage} />
-                            <Route path='/result' component={ResultPage} />
-                            <Route path='/pending' component={PendingRoom} />
+                            <Route path='/common/' component={Common} />
                             <Route path='/choise' component={AdminChoiseTest} />
-                            <Route path='/dashbord' component={Dashbord} />
-                            <Route path='/common' component={Common} />
+
                             <Route path='/' component={StartPage} />
 
 

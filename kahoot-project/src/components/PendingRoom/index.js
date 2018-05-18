@@ -3,13 +3,7 @@ import styled from 'styled-components';
 import {connect} from 'react-redux';
 
 
-//
-                // <ul>
-                //     {this.state.userList.map((userList, index) => {
-                //         return <li>{this.state.userList[index]}</li>
-                //     })}
-                // </ul>
-                //
+
 
 const Container = styled.div`
     font-style: italic;
@@ -59,22 +53,39 @@ opacity: .7;
 `
 
 class PedingRoom extends Component{
-    state = {
-        currentUser: this.props.nickName,
-        userList: ['Jim', 'Bim', 'Sim', 'Kim', 'Vim', 'Lim', 'Fim', 'Rim', 'Pim', 'Him']
+    constructor(props){
+        super(props);
+        this.state = {
+            // currentUser: this.props.nickName,
+            // userList: this.props.users.users,
+            //  userList: [] ,
+             userList: ['Jim', 'Bim', 'Sim', 'Kim']
 
-    };
-    componentWillMount(){
+        };
+    }
+
+    componentDidMount(){
+
         window.socket.on("new-user-connected", (users) => {
+
             this.setState({
+                // userList: users
                 userList: users
             })
+
         });
+
         window.socket.on("user-disconnected", (users) => {
             this.setState({
                 userList: users
             })
+        });
+        window.socket.on("start-game", (questions) => {
+            console.log(questions);
+            this.props.setQuestions(questions);
+            this.props.history.push("/common/testing");
         })
+
     }
 
     componentWillUnmount(){
@@ -87,13 +98,22 @@ class PedingRoom extends Component{
 
             <Div>
 
-                <H1>{this.state.currentUser}</H1>
+                <H1>{this.props.currentUser}</H1>
                 <P>Waiting for other students!!!</P>
                 <Container>
                     <Ul>
-                        {this.state.userList.map((users, index) => {
-                            return <Li>{users.toUpperCase()}</Li>
+                        {this.props.users.map((user, index) => {
+                            // return <Li>{users.toUpperCase()}</Li>
+                            return <Li>{user.nickName} </Li>
                         })}
+
+
+
+                        {/*{this.state.userList.map((users, index) => {*/}
+                            {/*// return <Li>{users.toUpperCase()}</Li>*/}
+                            {/*return <Li>{users}</Li>*/}
+                        {/*})}*/}
+
                     </Ul>
                 </Container>
 
@@ -107,7 +127,9 @@ class PedingRoom extends Component{
 }
 const mapStateToProps = (state) => {
     return {
-        nickName: state.currentUser.nickName
+
+        nickName: state.currentUser.nickName,
+         users:state.users.users
     }
 };
 

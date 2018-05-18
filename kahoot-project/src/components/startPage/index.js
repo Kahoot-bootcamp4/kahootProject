@@ -2,6 +2,8 @@ import {Component} from 'react';
 import React from 'react';
 import styled from 'styled-components';
 import {Button} from '../UI/index';
+import {connect} from 'react-redux';
+
 
 
 // wraper
@@ -21,17 +23,22 @@ const Div = styled.div`
 
 class StartPage extends Component{
 
+
  render(){
      return(
          <Div>
              <Button
                      color = {'#fff'}
                      width = {'60'}
+                      onClick={()=>{this.props.history.push('/start')}}
+
 
              >USER</Button>
+
              <Button
                  color = {'#fff'}
                  width = {'60'}
+                 onClick={()=>{this.props.history.push('/login')}}
 
              >TEACHER</Button>
          </Div>
@@ -39,4 +46,8 @@ class StartPage extends Component{
  }
 }
 export default StartPage;
+
+// export default connect(mapStateToProps, null)(StartPage);
+
+// this.props.history.push('/name')
 

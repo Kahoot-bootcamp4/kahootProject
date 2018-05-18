@@ -30,9 +30,17 @@ module.exports = {
             // emit to all, write to db ...
         })
     },
+    startGame: (client) => {
+        Rooms.findById(client.id).exec()
+            .then((data) => {
+                client.broadcast.emit("start-game", data.questions);
+            }).catch((err) => {
+                console.err(err);
+        })
+    },
     timer: () => {},
     nextQuestion: () => {},
     endTest: () => {},
     disconnect: () => {}
 
-}
+};

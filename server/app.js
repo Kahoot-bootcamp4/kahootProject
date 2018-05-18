@@ -22,22 +22,32 @@ const room = require('./controllers/room.socket');
 io.on("connection", (client) => {
     room.connect(client);
     room.answer(client);
+    room.startGame(client);
 })
+
+
+
+
 
 const users = [];
 io.on('connection', (client) => {
     const name = client.handshake.query.name;
+
     users.push(name);
+
     console.log("User connected");
     console.log(users);
     console.log(name);
+
     io.emit("new-user-connected", users);
+
     client.on("disconnect", () => {
         const index = users.indexOf(name);
         if(index < 0){
             return;
         }
         users.splice(index, 1);
+
         io.emit("user-disconnected", users);
     });
 });
