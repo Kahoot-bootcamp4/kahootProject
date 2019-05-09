@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from "../UI/index"
+import { Button } from "../UI"
 import styled from 'styled-components';
 
 
