@@ -8,6 +8,7 @@ import PedingRoom from '../PendingRoom';
 import socket from 'socket.io-client';
 import {connect} from 'react-redux';
 import Dashbord from "../Dashbord";
+import Button from "../../UI/Button/Button";
 
 
 
@@ -36,10 +37,13 @@ class Common extends Component {
         return(
 
             <div>
-                <Route path='/common/dashbord' component={Dashbord} />
-                <Route path='/common/pending' component={PedingRoom} />
-                <Route path='/common/testing' component={TestingPage} />
-                <Route path='/common/result' component={ResultPage} />
+                {/*<Route path='/common/dashbord' component={Dashbord} />*/}
+                {/*<Route path='/common/pending' component={PedingRoom} />*/}
+                {/*<Route path='/common/testing' component={TestingPage} />*/}
+                {/*<Route path='/common/result' component={ResultPage} />*/}
+
+                <Button />
+
             </div>
         )
     }
