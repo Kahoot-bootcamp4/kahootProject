@@ -65,7 +65,7 @@ app.use('/games/', gameRoute);
 
 app.use('/rooms/', gameRoom);
 
-app.use(express.static('./kahoot-project/build'));
+app.use(express.static('./build'));
 
 app.use((err, req, res, next) => {
     res.json({
