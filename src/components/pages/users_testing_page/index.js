@@ -152,7 +152,7 @@
 import { PropTypes } from "prop-types";
 
 import React, {Component} from 'react';
-import Timer from "../Timer/Timer";
+import Timer from "../../UI/Timer/Timer";
 import './index.css'
 import styled from 'styled-components';
 import {connect} from 'react-redux';

@@ -2,7 +2,7 @@
 
 import  React, {Component} from "react";
 import styled from 'styled-components';
-import {Button} from "../UI";
+import {Button} from "../../UI";
 
 import {connect} from 'react-redux';
 import socket from 'socket.io-client';

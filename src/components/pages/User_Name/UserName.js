@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import {Button, Input} from '../UI/index';
+import {Button, Input} from '../../UI';
 import {connect} from 'react-redux';
 
 const DivName = styled.div`

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from "prop-types";
 import styled from 'styled-components';
-import {Button, Input} from '../UI';
+import {Button, Input} from '../../UI';
 import {connect} from 'react-redux';
 
 

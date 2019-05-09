@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 
-import {Button, Input} from '../UI';
+import {Button, Input} from '../../UI';
 
 const Div = styled.div`
 background-color: #e7e8ea;
