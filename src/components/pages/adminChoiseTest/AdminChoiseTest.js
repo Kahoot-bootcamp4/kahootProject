@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import  {Button} from "../UI";
+import  {Button} from "../../UI";
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 

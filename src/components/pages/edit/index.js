@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from "../UI"
+import { Button } from "../../UI"
 import styled from 'styled-components';
 
 
@@ -102,7 +102,7 @@ class Create extends Component {
     }
 }
 
-class AdminCreateGame extends Component {
+class AdminEditGame extends Component {
 
     constructor(props){
         super(props);
@@ -120,24 +120,18 @@ class AdminCreateGame extends Component {
         };
     };
 
-
-    // componentWillMount(){
-    //     this.getGame();
-    // }
-    //
-    // getGame = () => {
-    //
-    //     fetch('https://kahoot-bootcamp4.herokuapp.com/games/', {
-    //         method: 'GET',
-    //         body: JSON.stringify(this.state),
-    //         headers: {
-    //             Accept: 'application/json',
-    //             'Content-Type': 'application/json',
-    //         }
-    //     })
-    //
-    // };
-
+    askGame = (id) =>{
+        fetch(`https://kahoot-bootcamp4.herokuapp.com/games/${id}`)
+            .then((res)=>res.json())
+            .then((data)=> {
+                console.log(data.data);
+                this.setState({...data.data})
+            })
+    };
+componentWillMount(){
+    console.log(this.props.match.params.id);
+    this.askGame(this.props.match.params.id)
+}
     sendGame = () => {
         let newGame = this.state;
         console.log(newGame);
@@ -195,9 +189,9 @@ class AdminCreateGame extends Component {
     render () {
         return (
             <Wrapper>
-                <Button  width="30" color="#E321E7" onClick={this.namedGame} >Введите имя игры</Button> <br/>
+                <Button height="30" width="30" color="#E321E7" onClick={this.namedGame} >Введите имя игры</Button> <br/>
                 <p>{this.state.description}</p>
-                <Button  width="30" color="#2D3EFF" onClick={this.createBlock} >Создать вопрос</Button>
+                <Button height="30" width="30" color="#2D3EFF" onClick={this.createBlock} >Создать вопрос</Button>
                 {
                     <Create questionInfo={this.state.games}
                             updateQuestion={this.updateQuestion}
@@ -207,11 +201,11 @@ class AdminCreateGame extends Component {
                     >
                     </Create>
                 }
-                <br/><Button width="30" color="#E321E7" onClick={this.sendGame} >ОТПРАВКА ИГРЫ</Button>
+                <br/><Button height="30" width="30" color="#E321E7" onClick={this.sendGame} >ОТПРАВКА ИГРЫ</Button>
 
             </Wrapper>
         )
     }
 }
 
-export default AdminCreateGame;
+export default AdminEditGame;

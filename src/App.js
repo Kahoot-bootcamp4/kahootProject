@@ -5,18 +5,18 @@ import {excludeProp, getLogged} from "./utils";
 import {Provider} from 'react-redux';
 import store from './components/store/index';
 
-import StartPage from './components/startPage';
-import AdminLogin from './components/admin_login/Login'
-import AdminCreateGame from './components/admin_create_game';
-import TestingPage from './components/users_testing_page/index';
-import AdminEditGame from './components/edit/';
-import UserStartPage from './components/User_Start_Page/UserStartPage';
-import UserName from './components/User_Name/UserName';
-import ResultPage from './components/resultPage';
-import PendingRoom from './components/PendingRoom';
-import Dashbord from './components/Dashbord/index';
-import AdminChoiseTest from './components/adminChoiseTest/AdminChoiseTest';
-import Common from './components/Common/index';
+import StartPage from './components/pages/startPage';
+import AdminLogin from './components/pages/admin_login/Login'
+import AdminCreateGame from './components/pages/admin_create_game';
+import TestingPage from './components/pages/users_testing_page/index';
+import AdminEditGame from './components/pages/edit/';
+import UserStartPage from './components/pages/User_Start_Page/UserStartPage';
+import UserName from './components/pages/User_Name/UserName';
+import ResultPage from './components/pages/resultPage';
+import PendingRoom from './components/pages/PendingRoom';
+import Dashbord from './components/pages/Dashbord/index';
+import AdminChoiseTest from './components/pages/adminChoiseTest/AdminChoiseTest';
+import Common from './components/pages/Common/index';
 
 const PrivateRoute = (props) => {
 
