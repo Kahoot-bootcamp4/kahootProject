@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/spooon1993/kahootProject/issues"
   },
-  "homepage": "https://github.com/spooon1993/kahootProject#readme",
+  "homepage": "https://kahoot-bootcamp4.herokuapp.com/",
   "dependencies": {
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
